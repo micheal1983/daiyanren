@@ -5,7 +5,7 @@ import Bottom from "./components/bottom.vue";
 </script>
 
 <template>
-  <top/>
+  <top msg="Hello World"></top>
 
   <div>
     <a href="https://vite.dev" target="_blank">
