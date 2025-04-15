@@ -14,5 +14,4 @@ function aaa(){
 </template>
 
 <style scoped>
-
 </style>
