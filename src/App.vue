@@ -11,10 +11,23 @@ import About_gamezone from "./components/about_gamezone.vue";
 import Table_game from "./components/table_game.vue";
 import New_game from "./components/new_game.vue";
 import Biggest_winings from "./components/biggest_winings.vue";
+import {onMounted, ref} from "vue";
+
+console.log(1234);
+let mywidth;
+const wrap = document.getElementById('wrap');
+window.onresize = () => {
+  return (() => {
+    console.log(mywidth);
+    mywidth = document.documentElement.clientWidth/1170;
+  })()
+}
+
+
 </script>
 
 <template>
-  <div id="wrap">
+  <div id="wrap" :style="{zoom:1}">
   <top msg="Hello World"></top>
   <banner></banner>
   <recommend></recommend>
