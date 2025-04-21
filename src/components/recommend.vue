@@ -10,7 +10,7 @@
   </div>
   <div id="recommend-list">
     <span><img src="../assets/pic-game/Color Game.webp" height="284" width="228"/></span>
-    <span><img src="../assets/pic-game/[JILI]Mines.webp" height="284" width="228"/></span>
+    <span><img src="../assets/pic-game/JILI_Mines.webp" height="284" width="228"/></span>
     <span><img src="../assets/pic-game/Jackpot Fishing.webp" height="284" width="228"/></span>
     <span><img src="../assets/pic-game/Lucky Hilo.webp" height="284" width="228"/></span>
     <span><img src="../assets/pic-game/Texas.webp" height="284" width="228"/></span>

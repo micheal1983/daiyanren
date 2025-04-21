@@ -4,8 +4,8 @@
 
 <template>
 <div class="pic-list">
-  <span><img src="../assets/pic-game/[JILI]Color Game.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/[JILI]Mines.webp" height="284" width="228"/></span>
+  <span><img src="../assets/pic-game/JILI_Color%20Game.webp" height="284" width="228"/></span>
+  <span><img src="../assets/pic-game/JILI_Mines.webp" height="284" width="228"/></span>
   <span><img src="../assets/pic-game/Color Game.webp" height="284" width="228"/></span>
   <span><img src="../assets/pic-game/Jackpot Bingo.webp" height="284" width="228"/></span>
   <span><img src="../assets/pic-game/Jackpot Fishing.webp" height="284" width="228"/></span>

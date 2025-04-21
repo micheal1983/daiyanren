@@ -12,7 +12,7 @@
       <span><img src="../assets/pic-game/Jackpot Bingo.webp" height="284" width="228"/></span>
       <span><img src="../assets/pic-game/Lucky Hilo.webp" height="284" width="228"/></span>
       <span><img src="../assets/pic-game/Mega Fishing.webp" height="284" width="228"/></span>
-      <span><img src="../assets/pic-game/[JILI]Color Game.webp" height="284" width="228"/></span>
+      <span><img src="../assets/pic-game/JILI_Color%20Game.webp" height="284" width="228"/></span>
     </div>
   </div>
 </template>
