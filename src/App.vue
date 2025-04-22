@@ -20,14 +20,16 @@ window.onresize = () => {
   return (() => {
     console.log(mywidth);
     mywidth = document.documentElement.clientWidth/1170;
+    const bbb = "33333";
   })()
-}
+};
+
 
 
 </script>
 
 <template>
-  <div id="wrap" :style="{zoom:1}">
+  <div id="wrap" :style="{zoom:.99}">
   <top msg="Hello World"></top>
   <banner></banner>
   <recommend></recommend>
