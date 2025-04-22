@@ -12,9 +12,9 @@
     <span><img src="../assets/pic-game/Color Game.webp" height="284" width="228"/></span>
     <span><img src="../assets/pic-game/JILI_Mines.webp" height="284" width="228"/></span>
     <span><img src="../assets/pic-game/Jackpot Fishing.webp" height="284" width="228"/></span>
-    <span><img src="../assets/pic-game/Lucky Hilo.webp" height="284" width="228"/></span>
     <span><img src="../assets/pic-game/Texas.webp" height="284" width="228"/></span>
-    <span><img src="../assets/pic-game/Tongits Joker.webp" height="284" width="228"/></span>
+    <span><img src="../assets/pic-game/Lucky9.webp" height="284" width="228"/></span>
+    <span><img src="../assets/pic-game/JILI_Color Game.webp" height="284" width="228"/></span>
   </div>
 </div>
 </template>
