@@ -13,6 +13,8 @@ import About_gamezone from "./components/about_gamezone.vue";
 import Table_game from "./components/table_game.vue";
 import New_game from "./components/new_game.vue";
 import Biggest_winings from "./components/biggest_winings.vue";
+import {Vue3Lottie} from "vue3-lottie";
+import animationData from './lottie/2.json'
 
 // 缩放比例
 const scale = ref(1);
@@ -39,6 +41,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateScale);
 });
+
+const showOverlay = ref(true) // 控制是否显示蒙版
 </script>
 
 <template>
@@ -52,6 +56,15 @@ onBeforeUnmount(() => {
         width: '1170px',
       }"
     >
+
+
+      <div class="overlay">
+        <div id="lottie">
+          <Vue3Lottie :animationData="animationData" :loop="true" :autoplay="true" style="width:474px; height:432px" />
+        </div>
+      </div>
+
+
       <top msg="Hello World"/>
       <banner/>
       <recommend/>
@@ -78,5 +91,15 @@ onBeforeUnmount(() => {
 .content {
   margin: 0 auto;
   /* 注意：transform 缩放后 margin 视觉上不会影响居中 */
+}
+#lottie{ width: 876px; height: 1452px; margin: 0 auto; margin-top: 400px; background: url("./assets/vip/vip-alert.png") no-repeat;}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
+  z-index: 9999; /* 保证在最顶层 */
 }
 </style>
