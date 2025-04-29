@@ -10,7 +10,7 @@
       <div class="all">All</div>
     </div>
     <div id="gzoriginals-list">
-      <span><img src="../assets/pic-game/Tongits Joker.webp" height="284" width="228"/></span>
+      <span><img src="../assets/pic-game/green-joker.webp" height="284" width="228"/></span>
       <span><img src="../assets/pic-game/Mines.webp" height="284" width="228"/></span>
       <span><img src="../assets/pic-game/Piggy Tap.webp" height="284" width="228"/></span>
       <span><img src="../assets/pic-game/Color Game.webp" height="284" width="228"/></span>

@@ -9,9 +9,9 @@
       <div class="title inline">Talbe Game</div>
     </div>
     <div id="table_game-list">
-      <span><img src="../assets/pic-game/Tongits Plus.webp" height="284" width="228"/></span>
-      <span><img src="../assets/pic-game/Pusoy.webp" height="284" width="228"/></span>
-      <span><img src="../assets/pic-game/Texas Plus.webp" height="284" width="228"/></span>
+      <span><img src="../assets/pic-game/green-tongits.webp" height="284" width="228"/></span>
+      <span><img src="../assets/pic-game/green-pusoy.webp" height="284" width="228"/></span>
+      <span><img src="../assets/pic-game/green-texas.webp" height="284" width="228"/></span>
       <span><img src="../assets/pic-game/Lucky9.webp" height="284" width="228"/></span>
     </div>
   </div>

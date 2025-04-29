@@ -58,13 +58,6 @@ const showOverlay = ref(true) // 控制是否显示蒙版
     >
 
 
-      <div class="overlay">
-        <div id="lottie">
-          <Vue3Lottie :animationData="animationData" :loop="true" :autoplay="true" style="width:474px; height:432px" />
-        </div>
-      </div>
-
-
       <top msg="Hello World"/>
       <banner/>
       <recommend/>
