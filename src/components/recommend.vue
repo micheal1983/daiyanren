@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, nextTick } from 'vue'
 
 const scrollEl = ref(null)
 
@@ -12,35 +12,34 @@ const images = [
   new URL('../assets/pic-game/JILI_Color Game.webp', import.meta.url).href,
 ]
 
-// 克隆形成无缝循环
+// 克隆一组形成无缝衔接
 const loopImages = computed(() => [...images, ...images])
 
-let scrollInterval = null
-let resumeTimeout = null
+let scrollTimer = null
 let isTouching = false
 let autoScrollPaused = false
+let resumeTimeout = null
 
 function autoScrollStep() {
   const el = scrollEl.value
   if (!el || isTouching || autoScrollPaused || el.scrollWidth === 0) return
 
-  el.scrollLeft += 1
-  const maxScroll = el.scrollWidth / 2
-  if (el.scrollLeft >= maxScroll) {
-    el.scrollLeft = 0
+  el.scrollLeft += 0.5 // 小步长更平滑
+
+  const halfScroll = el.scrollWidth / 2
+  if (el.scrollLeft >= halfScroll) {
+    el.scrollLeft -= halfScroll // 平滑跳转，不抖动
   }
 }
 
 function startAutoScroll() {
   stopAutoScroll()
-  scrollInterval = setInterval(autoScrollStep, 16) // roughly 60fps
+  scrollTimer = setInterval(autoScrollStep, 16) // ~60fps
 }
 
 function stopAutoScroll() {
-  if (scrollInterval) {
-    clearInterval(scrollInterval)
-    scrollInterval = null
-  }
+  clearInterval(scrollTimer)
+  scrollTimer = null
 }
 
 function onTouchStart() {
@@ -59,7 +58,10 @@ function onTouchEnd() {
 }
 
 onMounted(() => {
-  startAutoScroll()
+  nextTick(() => {
+    scrollEl.value.scrollLeft = 0
+    startAutoScroll()
+  })
 })
 
 onBeforeUnmount(() => {
@@ -121,7 +123,8 @@ onBeforeUnmount(() => {
   overflow-y: hidden;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 .scroll-container::-webkit-scrollbar {
