@@ -11,10 +11,10 @@ function aaa(){
 <template>
   <div id="top">
     <div class="left">
-      <div id="logo" class="inline"><img src="../assets/ms/logo.webp" height="96" width="162"/></div>
+      <div id="logo" class="inline"><router-link to="/"><img src="../assets/ms/logo.webp" height="96" width="162"/></router-link></div>
     </div>
     <div class="right">
-      <div id="btn-login" class="inline top-btn"><router-link to="/about">关于我们Sign in</router-link></div>
+      <div id="btn-login" class="inline top-btn">Sign in</div>
       <div id="btn-reg" class="inline top-btn"><img src="../assets/ms/btn-reg.webp" height="114" width="258"/></div>
       <div id="btn-search" class="inline top-btn"><img src="../assets/ms/btn-search.webp" height="114" width="114"/></div>
       <div id="btn-service" class="inline top-btn"><img src="../assets/ms/btn-service.webp" height="114" width="114"/></div>

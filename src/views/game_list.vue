@@ -1,6 +1,11 @@
 <script setup>
 import {onMounted, onBeforeUnmount, ref, nextTick} from 'vue';
-import Home from "./views/home.vue";
+
+import top from '../components/top.vue';
+import Bottom from "../components/bottom.vue";
+import Banner from "../components/Banner.vue";
+import Recommend from "../components/recommend.vue";
+import All_games from "../components/all_games.vue";
 
 // 缩放比例
 const scale = ref(1);
@@ -32,9 +37,21 @@ const showOverlay = ref(true) // 控制是否显示蒙版
 </script>
 
 <template>
-
-      <router-view />
-
+  <div class="scale-wrapper">
+    <div
+        id="wrap"
+        class="content"
+        :style="{
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        width: '1170px',
+      }"
+    >
+  <top msg="Hello World"/>
+  <banner/>
+  <all_games />
+    </div>
+  </div>
 </template>
 
 <style scoped>

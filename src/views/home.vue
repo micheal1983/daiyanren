@@ -1,6 +1,20 @@
 <script setup>
 import {onMounted, onBeforeUnmount, ref, nextTick} from 'vue';
-import Home from "./views/home.vue";
+
+import picList from '../components/picList.vue';
+import top from '../components/top.vue';
+import Bottom from "../components/bottom.vue";
+import Banner from "../components/Banner.vue";
+import Recommend from "../components/recommend.vue";
+import Mainenter from "../components/mainenter.vue";
+import Gzoriginals from "../components/gz_originals.vue";
+import Game_providers from "../components/game_providers.vue";
+import About_gamezone from "../components/about_gamezone.vue";
+import Table_game from "../components/table_game.vue";
+import New_game from "../components/new_game.vue";
+import Biggest_winings from "../components/biggest_winings.vue";
+import {Vue3Lottie} from "vue3-lottie";
+import animationData from '../lottie/2.json'
 
 // 缩放比例
 const scale = ref(1);
@@ -32,9 +46,31 @@ const showOverlay = ref(true) // 控制是否显示蒙版
 </script>
 
 <template>
+  <div class="scale-wrapper">
+    <div
+        id="wrap"
+        class="content"
+        :style="{
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        width: '1170px',
+      }"
+    >
 
-      <router-view />
-
+      <top msg="Hello World"/>
+      <banner/>
+      <recommend/>
+      <mainenter/>
+      <gzoriginals/>
+      <biggest_winings/>
+      <table_game/>
+      <new_game/>
+      <game_providers/>
+      <about_gamezone/>
+      <!-- <picList msg="Vite + Vue" /> -->
+      <bottom/>
+    </div>
+  </div>
 </template>
 
 <style scoped>

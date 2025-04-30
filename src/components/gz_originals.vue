@@ -7,7 +7,7 @@
     <div id="gzoriginals-title">
       <div class="ico inline"><img src="../assets/ms/GZ Originals.webp" height="66" width="66"/></div>
       <div class="title inline">GZ Originals</div>
-      <div class="all">All</div>
+      <div class="all"><router-link to="/game_list">All</router-link></div>
     </div>
     <div id="gzoriginals-list">
       <span><img src="../assets/pic-game/green-joker.webp" height="284" width="228"/></span>
