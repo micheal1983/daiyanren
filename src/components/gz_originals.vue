@@ -24,7 +24,21 @@
 #gzoriginals-title .ico{ width: 66px; height: 66px;}
 #gzoriginals-title .title{ margin-left: 24px; text-align: left; font-size: 2.8rem; font-weight: bold;}
 #gzoriginals-title .all{ width: 162px; height: 78px; line-height: 78px; color: #D5D2E1; font-size: 2.4rem; border-radius: 60px; background: #474451; text-align: center; float: right;}
-#gzoriginals-list{ width: auto; padding: 0 36px; margin-top: 24px; overflow: hidden; text-align: left; white-space: nowrap;}
+#gzoriginals-list {
+  padding: 0 36px;
+  margin-top: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-align: left;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+#gzoriginals-list::-webkit-scrollbar {
+  display: none;
+}
+
 #gzoriginals-list span{ width: 342px; display: inline-block; margin: 0 24px 0 0;}
 #gzoriginals-list span img{ width: 342px; height: 426px; border-radius: 24px;}
 </style>

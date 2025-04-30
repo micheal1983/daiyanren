@@ -22,7 +22,21 @@
 #table_game-title{ width: 100%; text-align: left; padding:0 36px;}
 #table_game-title .ico{ width: 66px; height: 66px;}
 #table_game-title .title{ margin-left: 24px; text-align: left; font-size: 2.8rem; font-weight: bold;}
-#table_game-list{ width: auto; padding: 0 36px; margin-top: 24px; overflow: hidden; text-align: left; white-space: nowrap;}
+#table_game-list {
+  padding: 0 36px;
+  margin-top: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-align: left;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+#table_game-list::-webkit-scrollbar {
+  display: none;
+}
+
 #table_game-list span{ width: 342px; display: inline-block; margin: 0 24px 0 0;}
 #table_game-list span img{ width: 342px; height: 426px; border-radius: 24px;}
 </style>

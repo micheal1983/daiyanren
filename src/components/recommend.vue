@@ -15,32 +15,32 @@ const images = [
 // 克隆形成无缝循环
 const loopImages = computed(() => [...images, ...images])
 
-let scrollTimer = null
+let scrollInterval = null
+let resumeTimeout = null
 let isTouching = false
 let autoScrollPaused = false
-let frameId = null
 
-function autoScroll() {
-  if (!scrollEl.value || isTouching || autoScrollPaused) return
-  scrollEl.value.scrollLeft += 1
-
-  // 无缝循环：到头回到一半
+function autoScrollStep() {
   const el = scrollEl.value
+  if (!el || isTouching || autoScrollPaused || el.scrollWidth === 0) return
+
+  el.scrollLeft += 1
   const maxScroll = el.scrollWidth / 2
   if (el.scrollLeft >= maxScroll) {
     el.scrollLeft = 0
   }
-
-  frameId = requestAnimationFrame(autoScroll)
 }
 
 function startAutoScroll() {
-  cancelAnimationFrame(frameId)
-  frameId = requestAnimationFrame(autoScroll)
+  stopAutoScroll()
+  scrollInterval = setInterval(autoScrollStep, 16) // roughly 60fps
 }
 
 function stopAutoScroll() {
-  cancelAnimationFrame(frameId)
+  if (scrollInterval) {
+    clearInterval(scrollInterval)
+    scrollInterval = null
+  }
 }
 
 function onTouchStart() {
@@ -48,17 +48,14 @@ function onTouchStart() {
   stopAutoScroll()
 }
 
-function onTouchMove() {
-  // nothing needed here, scroll happens naturally
-}
-
 function onTouchEnd() {
   isTouching = false
   autoScrollPaused = true
-  setTimeout(() => {
+  clearTimeout(resumeTimeout)
+  resumeTimeout = setTimeout(() => {
     autoScrollPaused = false
     startAutoScroll()
-  }, 2000) // 2秒后恢复
+  }, 2000)
 }
 
 onMounted(() => {
@@ -67,9 +64,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   stopAutoScroll()
+  clearTimeout(resumeTimeout)
 })
 </script>
-
 
 <template>
   <div id="recommend">
@@ -84,7 +81,6 @@ onBeforeUnmount(() => {
         ref="scrollEl"
         class="scroll-container"
         @touchstart="onTouchStart"
-        @touchmove="onTouchMove"
         @touchend="onTouchEnd"
     >
       <div class="scroll-content">
@@ -95,7 +91,6 @@ onBeforeUnmount(() => {
     </div>
   </div>
 </template>
-
 
 <style scoped>
 #recommend {
@@ -149,5 +144,4 @@ onBeforeUnmount(() => {
   border-radius: 24px;
   object-fit: cover;
 }
-
 </style>

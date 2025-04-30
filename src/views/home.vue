@@ -46,6 +46,7 @@ const showOverlay = ref(true) // 控制是否显示蒙版
 </script>
 
 <template>
+  <div id="mask" v-show="false">1234</div>
   <div class="scale-wrapper">
     <div
         id="wrap"
@@ -54,6 +55,7 @@ const showOverlay = ref(true) // 控制是否显示蒙版
         transform: `scale(${scale})`,
         transformOrigin: 'top left',
         width: '1170px',
+        height:'auto'
       }"
     >
 
@@ -76,13 +78,16 @@ const showOverlay = ref(true) // 控制是否显示蒙版
 <style scoped>
 .scale-wrapper {
   width: 100%;
-  overflow-x: auto;
+  height: auto;
+  overflow-x: hidden;
   background: #252328;
 }
 
 .content {
   margin: 0 auto;
   /* 注意：transform 缩放后 margin 视觉上不会影响居中 */
+  overflow-x: hidden;
+  height: auto;
 }
 #lottie{ width: 876px; height: 1452px; margin: 0 auto; margin-top: 400px; background: url("./assets/vip/vip-alert.png") no-repeat;}
 .overlay {
@@ -93,5 +98,13 @@ const showOverlay = ref(true) // 控制是否显示蒙版
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
   z-index: 9999; /* 保证在最顶层 */
+}
+#mask{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  z-index: 999;
+  text-align: center;
 }
 </style>
