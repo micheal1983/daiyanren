@@ -1,5 +1,5 @@
 <script setup>
-const message = 'Hello from MyComponent111'
+const message = 'Hello from MyComponent'
 const props = defineProps({
   msg: String
 })

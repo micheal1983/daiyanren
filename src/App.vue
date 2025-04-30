@@ -59,6 +59,7 @@ const showOverlay = ref(true) // 控制是否显示蒙版
 
       <router-link to="/">首页</router-link> |
       <router-link to="/about">关于我们</router-link>
+      <router-view />
 
       <top msg="Hello World"/>
       <banner/>
