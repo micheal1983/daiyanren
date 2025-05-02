@@ -60,8 +60,6 @@ const showOverlay = ref(true) // 控制是否显示蒙版
 <template>
   <!-- 动态加载 Popup 组件 -->
   <Popup v-if="showPopup" @close="close" />
-  <button @click="show">点击显示弹窗</button>
-  <div class="scale-wrapper">
     <div
         id="wrap"
         class="content"
@@ -73,9 +71,7 @@ const showOverlay = ref(true) // 控制是否显示蒙版
       }"
     >
 
-
-
-      <top msg="Hello World"/>
+      <top msg="Hello World" :showPopup="show"/>
       <banner/>
       <recommend/>
       <mainenter/>
@@ -88,41 +84,21 @@ const showOverlay = ref(true) // 控制是否显示蒙版
       <!-- <picList msg="Vite + Vue" /> -->
       <bottom/>
     </div>
-  </div>
 </template>
 
 <style scoped>
 .scale-wrapper {
   width: 100%;
-  height: auto;
   overflow-x: hidden;
-  background: #252328;
+  background: #213547;
+  /*background: #252328;*/
 }
 
 .content {
   margin: 0 auto;
   /* 注意：transform 缩放后 margin 视觉上不会影响居中 */
   overflow-x: hidden;
-  height: auto;
 }
 #lottie{ width: 200px; height: 452px; margin: 0 auto; background:#535bf2}
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
-  z-index: 9999; /* 保证在最顶层 */
-}
-#mask{
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  z-index: 999;
-  display: flex;
-  justify-content: center;   /* 水平居中 */
-  align-items: center;       /* 垂直居中 */
-  height: 100vh;             /* 视口高度 */
-}
+
 </style>

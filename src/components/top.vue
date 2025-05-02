@@ -1,7 +1,8 @@
 <script setup>
 const message = 'Hello from MyComponent'
 const props = defineProps({
-  msg: String
+  msg: String,
+  showPopup: Function
 })
 function aaa(){
   console.log(props.msg)
@@ -14,7 +15,7 @@ function aaa(){
       <div id="logo" class="inline"><router-link to="/"><img src="../assets/ms/logo.webp" height="96" width="162"/></router-link></div>
     </div>
     <div class="right">
-      <div id="btn-login" class="inline top-btn">Sign in</div>
+      <div id="btn-login" class="inline top-btn" @click="showPopup">Sign in</div>
       <div id="btn-reg" class="inline top-btn"><img src="../assets/ms/btn-reg.webp" height="114" width="258"/></div>
       <div id="btn-search" class="inline top-btn"><img src="../assets/ms/btn-search.webp" height="114" width="114"/></div>
       <div id="btn-service" class="inline top-btn"><img src="../assets/ms/btn-service.webp" height="114" width="114"/></div>
