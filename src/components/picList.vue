@@ -4,21 +4,21 @@
 
 <template>
 <div class="pic-list">
-  <span><img src="../assets/pic-game/JILI_Color%20Game.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/JILI_Mines.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Color Game.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Jackpot Bingo.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Jackpot Fishing.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Lucky Hilo.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Lucky9.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Mega Fishing.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Mines.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Piggy Tap.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Pusoy.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Texas Plus.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Texas.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Tongits Joker.webp" height="284" width="228"/></span>
-  <span><img src="../assets/pic-game/Tongits Plus.webp" height="284" width="228"/></span>
+  <span><img src="../assets/pic-game/JILI_Color%20Game.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/JILI_Mines.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Color Game.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Jackpot Bingo.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Jackpot Fishing.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Lucky Hilo.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Lucky9.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Mega Fishing.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Mines.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Piggy Tap.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Pusoy.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Texas Plus.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Texas.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Tongits Joker.webp" width="100%"/></span>
+  <span><img src="../assets/pic-game/Tongits Plus.webp" width="100%"/></span>
 </div>
 </template>
 

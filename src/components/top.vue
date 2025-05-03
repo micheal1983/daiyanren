@@ -12,7 +12,7 @@ function aaa(){
 <template>
   <div id="top">
     <div class="left">
-      <div id="logo" class="inline"><router-link to="/"><img src="../assets/ms/logo.webp" height="96" width="162"/></router-link></div>
+      <div id="logo" class="inline"><router-link to="/"><img src="../assets/ms/logo.webp" /></router-link></div>
     </div>
     <div class="right">
       <div id="btn-login" class="inline top-btn" @click="showPopup">Sign in</div>
@@ -20,21 +20,22 @@ function aaa(){
       <div id="btn-search" class="inline top-btn"><img src="../assets/ms/btn-search.webp" height="114" width="114"/></div>
       <div id="btn-service" class="inline top-btn"><img src="../assets/ms/btn-service.webp" height="114" width="114"/></div>
     </div>
-    <div class="clear"></div>
   </div>
 
 </template>
 
 <style scoped>
-#top{ width: 100%; padding: 27px 0; background: linear-gradient(180deg, #252328 5.26%, #312F36 100%); text-align: left;}
-.top-btn{ margin: 8px;}
-.left{ float: left; margin-left: 36px;}
-.right{ float: right; margin-right: 36px;}
+#top{ width: 100%; height: 54px; background: linear-gradient(180deg, #252328 5.26%, #312F36 100%); text-align: left; position: fixed;display: flex;
+  justify-content: space-between; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */}
+#top img{ width: 100%; height: auto;}
+.top-btn{ margin-left: 8px;}
+.left{ margin-left: 12px;}
+.right{ margin-right: 12px;}
 
-#logo{width: 162px; height: 114px;}
-#logo img{ margin-top: 9px;}
-#btn-login{ font-size: 3rem;}
-#btn-reg{ width: 258px; height: 114px;}
-#btn-search{ width: 114px; height: 114px;}
-#btn-service{ width: 114px; height: 114px;}
+#logo{width: 54px; height: 32px;}
+#btn-login{ font-size: 14px;}
+#btn-reg{ width: 86px; height: 38px;}
+#btn-search{ width: 38px; height: 38px;}
+#btn-service{ width: 38px; height: 38px;}
 </style>

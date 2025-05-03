@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
   <div id="recommend">
     <div id="recommend-title">
       <div class="ico inline">
-        <img src="../assets/ms/ico-recommend.webp" height="66" width="66" />
+        <img src="../assets/ms/ico-recommend.webp" width="100%" />
       </div>
       <div class="title inline">Recommend</div>
     </div>
@@ -101,20 +101,20 @@ onBeforeUnmount(() => {
 }
 
 #recommend-title {
-  padding: 0 36px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 #recommend-title .ico {
-  width: 66px;
-  height: 66px;
+  width: 22px;
+  height: 22px;
 }
 
 #recommend-title .title {
-  margin-left: 24px;
-  font-size: 2.8rem;
+  margin-left: 8px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -136,15 +136,15 @@ onBeforeUnmount(() => {
 }
 
 .item {
-  width: 180px;
-  margin-right: 24px;
+  width: 60px;
+  margin-right: 8px;
   flex: 0 0 auto;
 }
 
 .item img {
-  width: 180px;
-  height: 222px;
-  border-radius: 24px;
+  width: 60px;
+  height: 74px;
+  border-radius: 8px;
   object-fit: cover;
 }
 </style>
