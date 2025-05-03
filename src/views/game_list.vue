@@ -1,5 +1,4 @@
 <script setup>
-import {onMounted, onBeforeUnmount, ref, nextTick} from 'vue';
 
 import top from '../components/top.vue';
 import Bottom from "../components/bottom.vue";
@@ -16,7 +15,7 @@ import All_games from "../components/all_games.vue";
   <top msg="Hello World"/>
   <banner/>
   <all_games />
-    <bottom />
+  <bottom />
   </div>
 </template>
 
