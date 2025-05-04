@@ -27,7 +27,7 @@ function aaa(){
 <style scoped>
 #top{ width: 100%; height: 54px; background: linear-gradient(180deg, #252328 5.26%, #312F36 100%); text-align: left; position: fixed;display: flex;
   justify-content: space-between; /* 水平居中 */
-  align-items: center;     /* 垂直居中 */}
+  align-items: center;     /* 垂直居中 */ z-index: 9998;}
 #top img{ width: 100%; height: auto;}
 .top-btn{ margin-left: 8px;}
 .left{ margin-left: 12px;}

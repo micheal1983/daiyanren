@@ -14,6 +14,7 @@ import Table_game from "../components/scrolling_home.vue";
 import New_game from "../components/scrolling_home.vue";
 import Biggest_winings from "../components/biggest_winings.vue";
 import Popup from '../components/Popup.vue'
+import tab_navigation from "../components/tab_navigation.vue";
 
 const showPopup = ref(false);
 // 显示弹窗
@@ -79,6 +80,8 @@ onMounted(() => {
       <keep-alive>
       <bottom/>
       </keep-alive>
+
+      <tab_navigation />
     </div>
 </template>
 
