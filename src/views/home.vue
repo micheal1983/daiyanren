@@ -13,20 +13,9 @@ import About_gamezone from "../components/about_gamezone.vue";
 import Table_game from "../components/scrolling_home.vue";
 import New_game from "../components/scrolling_home.vue";
 import Biggest_winings from "../components/biggest_winings.vue";
-import Popup from '../components/Popup.vue'
-import tab_navigation from "../components/tab_navigation.vue";
 
-const showPopup = ref(false);
-// 显示弹窗
-const show = () => {
-  showPopup.value = true
-}
-// 关闭弹窗
-const close = () => {
-  showPopup.value = false
-}
-// 监听全局关闭事件（例如点击遮罩时关闭）
-window.addEventListener('close', close);
+
+
 
 // 每个栏目都调用一次
 const {
@@ -53,10 +42,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- 动态加载 Popup 组件 -->
-    <Popup v-if="showPopup" @close="close" />
+
     <div id="wrap">
-      <top msg="Hello World" :showPopup="show"/>
+      <top msg="Hello World"/>
       <banner/>
       <recommend/>
       <mainenter/>

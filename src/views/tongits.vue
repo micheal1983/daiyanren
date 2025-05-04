@@ -56,7 +56,7 @@ onMounted(() => {
   <!-- 动态加载 Popup 组件 -->
   <Popup v-if="showPopup" @close="close" />
   <div id="wrap">
-    <top msg="Hello World" :showPopup="show"/>
+    <top msg="Hello World" />
     <banner/>
     <recommend/>
     <mainenter/>
