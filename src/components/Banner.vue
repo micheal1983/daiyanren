@@ -10,5 +10,5 @@
 </template>
 
 <style scoped>
-.banner{ margin-top: 54px;}
+
 </style>

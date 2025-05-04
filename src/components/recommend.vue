@@ -2,7 +2,6 @@
 import { ref, onMounted, onBeforeUnmount, computed, nextTick } from 'vue'
 
 const scrollEl = ref(null)
-
 const images = [
   new URL('../assets/pic-game/Color Game.webp', import.meta.url).href,
   new URL('../assets/pic-game/JILI_Mines.webp', import.meta.url).href,
@@ -12,7 +11,6 @@ const images = [
   new URL('../assets/pic-game/JILI_Color Game.webp', import.meta.url).href,
 ]
 
-// 克隆一组形成无缝衔接
 const loopImages = computed(() => [...images, ...images])
 
 let scrollTimer = null
@@ -24,17 +22,17 @@ function autoScrollStep() {
   const el = scrollEl.value
   if (!el || isTouching || autoScrollPaused || el.scrollWidth === 0) return
 
-  el.scrollLeft += 0.5 // 小步长更平滑
+  el.scrollLeft += 0.5
 
   const halfScroll = el.scrollWidth / 2
   if (el.scrollLeft >= halfScroll) {
-    el.scrollLeft -= halfScroll // 平滑跳转，不抖动
+    el.scrollLeft -= halfScroll
   }
 }
 
 function startAutoScroll() {
   stopAutoScroll()
-  scrollTimer = setInterval(autoScrollStep, 16) // ~60fps
+  scrollTimer = setInterval(autoScrollStep, 16)
 }
 
 function stopAutoScroll() {
@@ -57,11 +55,24 @@ function onTouchEnd() {
   }, 2000)
 }
 
-onMounted(() => {
-  nextTick(() => {
-    scrollEl.value.scrollLeft = 0
-    startAutoScroll()
+// 确保图片加载完后再启动滚动
+function waitForImagesLoaded() {
+  const images = scrollEl.value?.querySelectorAll('img') || []
+  const promises = Array.from(images).map(img => {
+    return new Promise(resolve => {
+      if (img.complete) return resolve()
+      img.onload = resolve
+      img.onerror = resolve
+    })
   })
+  return Promise.all(promises)
+}
+
+onMounted(async () => {
+  await nextTick()
+  await waitForImagesLoaded()
+  scrollEl.value.scrollLeft = 1
+  startAutoScroll()
 })
 
 onBeforeUnmount(() => {
@@ -82,8 +93,10 @@ onBeforeUnmount(() => {
     <div
         ref="scrollEl"
         class="scroll-container"
-        @touchstart="onTouchStart"
-        @touchend="onTouchEnd"
+        @pointerdown="onTouchStart"
+        @pointerup="onTouchEnd"
+        @pointercancel="onTouchEnd"
+        @pointerleave="onTouchEnd"
     >
       <div class="scroll-content">
         <div v-for="(img, index) in loopImages" :key="index" class="item">

@@ -54,35 +54,35 @@ onMounted(() => {
 
 <template>
   <!-- 动态加载 Popup 组件 -->
-    <Popup v-if="showPopup" @close="close" />
-    <div id="wrap">
-      <top msg="Hello World" :showPopup="show"/>
-      <banner/>
-      <recommend/>
-      <mainenter/>
-      <gzoriginals tit="GZ Originals" :items="imagesGZ" />
+  <Popup v-if="showPopup" @close="close" />
+  <div id="wrap">
+    <top msg="Hello World" :showPopup="show"/>
+    <banner/>
+    <recommend/>
+    <mainenter/>
+    <gzoriginals tit="GZ Originals" :items="imagesGZ" />
 
-      <keep-alive>
+    <keep-alive>
       <biggest_winings/>
-      </keep-alive>
+    </keep-alive>
 
-      <table_game tit="Table Game" :items="imagesTG" />
-      <new_game tit="New Game" :items="imagesNG" />
+    <table_game tit="Table Game" :items="imagesTG" />
+    <new_game tit="New Game" :items="imagesNG" />
 
-      <keep-alive>
+    <keep-alive>
       <game_providers/>
-      </keep-alive>
+    </keep-alive>
 
-      <keep-alive>
+    <keep-alive>
       <about_gamezone/>
-      </keep-alive>
+    </keep-alive>
 
-      <keep-alive>
+    <keep-alive>
       <bottom/>
-      </keep-alive>
+    </keep-alive>
 
 
-    </div>
+  </div>
 </template>
 
 <style scoped>
