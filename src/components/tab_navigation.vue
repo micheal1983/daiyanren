@@ -34,7 +34,7 @@ function isActive(path) {
 
 <style scoped>
 #tab_navigation {
-  width: 100%;
+  width: calc(100% + 1px);
   height: 64px;
   background: #312F37;
   position: fixed;

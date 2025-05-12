@@ -39,7 +39,7 @@ window.addEventListener('close', close);
 </template>
 
 <style scoped>
-#top{ width: 100%; height: 54px; background: linear-gradient(180deg, #252328 5.26%, #312F36 100%); margin-top: -1px;
+#top{ width: calc(100% + 1px); height: 54px; background: linear-gradient(180deg, #252328 5.26%, #312F36 100%); margin-top: -1px;
   position: fixed; top: 0; left: 0; z-index: 9998;
   display: flex; justify-content: space-between; align-items: center; }
 #top img{ width: 100%; height: auto;}
