@@ -14,7 +14,7 @@ let intervalId = null
 const startAutoSlide = () => {
   intervalId = setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % total
-  }, 3000)
+  }, 5000)
 }
 
 const stopAutoSlide = () => clearInterval(intervalId)

@@ -78,7 +78,7 @@ onMounted(() => {
 #wrap {
   margin: 0 auto;
   overflow-x: hidden;
-  padding: 53px 0 64px 0;
+  padding: calc(54px + env(safe-area-inset-top)) 0 64px 0;
 }
 
 </style>

@@ -1,6 +1,6 @@
 {
-  "name": "游戏入口动画演示",
-  "short_name": "动画演示",
+  "name": "GameZone游戏入口动画演示",
+  "short_name": "GZ动画演示",
   "start_url": "/daiyanren/",
   "display": "standalone",
   "background_color": "#ffffff",
