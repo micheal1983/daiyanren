@@ -15,7 +15,7 @@ const props = defineProps({
     </div>
     <div class="scrolling-list">
       <span v-for="(item, index) in items" :key="item.id">
-        <img :src="item.url" width="100%" loading="lazy" />
+        <router-link to="/game"><img :src="item.url" width="100%" loading="lazy" /></router-link>
       </span>
     </div>
   </div>

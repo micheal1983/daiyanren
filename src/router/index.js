@@ -5,6 +5,7 @@ import reward from "../views/reward.vue";
 import tongits from "../views/tongits.vue";
 import wallet from "../views/wallet.vue";
 import account from "../views/account.vue";
+import game from "../views/game.vue";
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
@@ -13,6 +14,7 @@ const routes = [
     { path: '/wallet', name: 'wallet', component: wallet },
     { path: '/account', name: 'account', component: account },
     { path: '/game_list', name: 'game_list', component: game_list },
+    { path: '/game', name: 'game', component: game },
 ]
 
 const router = createRouter({

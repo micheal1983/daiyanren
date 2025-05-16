@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
     >
       <div class="scroll-content">
         <div v-for="(img, index) in loopImages" :key="index" class="item">
-          <img :src="img" />
+          <router-link to="/game"><img :src="img" /></router-link>
         </div>
       </div>
     </div>
