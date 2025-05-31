@@ -32,6 +32,14 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+ul,li{ margin: 0; padding: 0; list-style: none; font-size: 0;}
+
+
+#wrap {
+  margin: 0 auto;
+  overflow-x: hidden;
+  padding: calc(54px + env(safe-area-inset-top)) 0 64px 0;
+}
 
 button {
   border-radius: 8px;

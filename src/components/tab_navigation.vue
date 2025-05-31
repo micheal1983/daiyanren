@@ -7,7 +7,7 @@ const route = useRoute()
 const tabs = [
   { name: 'home', label: 'home', path: '/', icon: 'home' },
   { name: 'reward', label: 'reward', path: '/reward', icon: 'reward' },
-  { name: 'tongits', label: 'tongits', path: '/tongits', icon: 'tongits_btn' },
+  { name: 'promo', label: 'promo', path: '/promo', icon: 'tongits_btn' },
   { name: 'wallet', label: 'wallet', path: '/wallet', icon: 'wallet' },
   { name: 'account', label: 'account', path: '/account', icon: 'account' },
 ]
@@ -64,6 +64,7 @@ function isActive(path) {
 .home { background: url("../assets/ms/home.webp") no-repeat top; background-size: 28px 28px; }
 .reward { background: url("../assets/ms/reward.webp") no-repeat top; background-size: 28px 28px; }
 .tongits { background: url("../assets/ms/tongits_btn.webp") no-repeat top; background-size: 28px 28px; }
+.promo { background: url("../assets/ms/tongits_btn.webp") no-repeat top; background-size: 28px 28px; }
 .wallet { background: url("../assets/ms/wallet.webp") no-repeat top; background-size: 28px 28px; }
 .account { background: url("../assets/ms/account.webp") no-repeat top; background-size: 28px 28px; }
 
@@ -71,6 +72,7 @@ function isActive(path) {
 .home.focus { background-image: url("../assets/ms/home_act.webp"); color: #FFC972; }
 .reward.focus { background-image: url("../assets/ms/reward_act.webp"); color: #FFC972; }
 .tongits.focus { background-image: url("../assets/ms/tongits_btn_act.webp"); color: #FFC972; }
+.promo.focus { background-image: url("../assets/ms/tongits_btn_act.webp"); color: #FFC972; }
 .wallet.focus { background-image: url("../assets/ms/wallet_act.webp"); color: #FFC972; }
 .account.focus { background-image: url("../assets/ms/account_act.webp"); color: #FFC972; }
 </style>

@@ -6,12 +6,14 @@ import tongits from "../views/tongits.vue";
 import wallet from "../views/wallet.vue";
 import account from "../views/account.vue";
 import game from "../views/game.vue";
+import promo from "../views/promo.vue";
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/reward', name: 'reward', component: reward },
     { path: '/tongits', name: 'tongits', component: tongits },
     { path: '/wallet', name: 'wallet', component: wallet },
+    { path: '/promo', name: 'promo', component: promo },
     { path: '/account', name: 'account', component: account },
     { path: '/game_list', name: 'game_list', component: game_list },
     { path: '/game', name: 'game', component: game },

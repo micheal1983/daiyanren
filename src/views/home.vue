@@ -75,10 +75,6 @@ onMounted(() => {
 
 <style scoped>
 
-#wrap {
-  margin: 0 auto;
-  overflow-x: hidden;
-  padding: calc(54px + env(safe-area-inset-top)) 0 64px 0;
-}
+
 
 </style>
