@@ -1,0 +1,83 @@
+
+Anim1.png
+size: 1941, 1641
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bg
+  rotate: false
+  xy: 2, 344
+  size: 640, 640
+  orig: 642, 642
+  offset: 1, 1
+  index: -1
+boom
+  rotate: true
+  xy: 1097, 2
+  size: 424, 390
+  orig: 427, 392
+  offset: 2, 1
+  index: -1
+boom_01_01
+  rotate: true
+  xy: 1716, 783
+  size: 224, 211
+  orig: 504, 485
+  offset: 154, 154
+  index: -1
+boom_01_02
+  rotate: true
+  xy: 654, 16
+  size: 410, 441
+  orig: 504, 485
+  offset: 37, 42
+  index: -1
+boom_01_03
+  rotate: false
+  xy: 1256, 558
+  size: 458, 449
+  orig: 504, 485
+  offset: 0, 31
+  index: -1
+boom_01_04
+  rotate: false
+  xy: 1489, 117
+  size: 420, 439
+  orig: 504, 485
+  offset: 83, 26
+  index: -1
+guanghuan
+  rotate: false
+  xy: 657, 428
+  size: 597, 586
+  orig: 644, 618
+  offset: 15, 17
+  index: -1
+kuang
+  rotate: false
+  xy: 1309, 1009
+  size: 630, 630
+  orig: 632, 632
+  offset: 1, 1
+  index: -1
+light1
+  rotate: false
+  xy: 2, 986
+  size: 653, 653
+  orig: 655, 655
+  offset: 1, 1
+  index: -1
+light2
+  rotate: false
+  xy: 657, 1016
+  size: 650, 623
+  orig: 663, 631
+  offset: 8, 1
+  index: -1
+logo
+  rotate: false
+  xy: 2, 36
+  size: 650, 306
+  orig: 652, 308
+  offset: 1, 1
+  index: -1
