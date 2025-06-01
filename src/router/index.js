@@ -7,6 +7,7 @@ import wallet from "../views/wallet.vue";
 import account from "../views/account.vue";
 import game from "../views/game.vue";
 import promo from "../views/promo.vue";
+import SpinePixi from "../components/SpinePixi.vue";
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
@@ -17,6 +18,7 @@ const routes = [
     { path: '/account', name: 'account', component: account },
     { path: '/game_list', name: 'game_list', component: game_list },
     { path: '/game', name: 'game', component: game },
+    { path: '/SpinePixi', name: 'SpinePixi', component: SpinePixi },
 ]
 
 const router = createRouter({

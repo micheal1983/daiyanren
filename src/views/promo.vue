@@ -5,6 +5,9 @@ import pic6888 from '../assets/ms/6888.webp'
 import pic300k from '../assets/ms/300k.webp'
 import GTCC from '../assets/ms/GTCC.webp'
 import VIP from '../assets/ms/VIP.webp'
+
+import { Vue3Lottie } from 'vue3-lottie'
+import animationData from '../assets/lottie/2.json' // 可本地导入 JSON
 </script>
 
 <template>
@@ -14,11 +17,12 @@ import VIP from '../assets/ms/VIP.webp'
     <div class="exclusive">
       <ul>
         <li><promo_ico :pic="pic6888" msg="New Comers"/></li>
-        <li><promo_ico :pic="pic300k" msg="Daily Bonus"/></li>
+        <li><router-link to="/SpinePixi"><promo_ico :pic="pic300k" msg="Daily Bonus"/></router-link></li>
         <li><promo_ico :pic="VIP" msg="VIP"/></li>
         <li><promo_ico :pic="GTCC" msg="GTCC"/></li>
       </ul>
     </div>
+
     <div class="promo_title1"><img src="../assets/ms/promo_title1.webp" width="100%"/></div>
     <div class="promo_tab"><img src="../assets/ms/promo_tab.webp" width="100%"/></div>
     <div class="banners">
