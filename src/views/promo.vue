@@ -17,7 +17,7 @@ import animationData from '../assets/lottie/icon_opt.json' // 可本地导入 JS
     <div class="exclusive">
       <ul>
         <li><promo_ico :pic="pic6888" :isImg="true" msg="New Comers"/></li>
-        <li><router-link to="/SpinePixi"><promo_ico :pic="pic6888" :isLottie="true" msg="New Comers"/></router-link></li>
+        <li><router-link to="/SpinePixi"><promo_ico :pic="pic6888" :isJson="true" msg="New Comers"/></router-link></li>
         <li><promo_ico :pic="VIP" :isImg="true" msg="VIP"/></li>
         <li><promo_ico :pic="GTCC" :isImg="true" msg="GTCC"/></li>
       </ul>
