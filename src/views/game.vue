@@ -1,44 +1,27 @@
 <script setup>
-import * as PIXI from 'pixi.js'
-import 'pixi-spine'
-import { onMounted, ref } from 'vue'
 
-const container = ref(null)
-
-onMounted(async () => {
-  const app = new PIXI.Application({
-    width: 600,
-    height: 600,
-    backgroundAlpha: 0,
-  })
-  container.value.appendChild(app.view)
-
-  const spineAssets = {
-    json: 'daiyanren/spine/Anim1/Anim1.json',
-    atlas: 'daiyanren/spine/Anim1/Anim1.atlas',
-    png: 'daiyanren/spine/Anim1/Anim1.png',
-  }
-
-  // 加载 Spine 资源
-  PIXI.Assets.add('spineHero', {
-    alias: 'hero',
-    srcs: [spineAssets.json, spineAssets.atlas, spineAssets.png],
-    loadParser: 'spine',
-  })
-
-  const spineResource = await PIXI.Assets.load('spineHero')
-
-  const spineAnim = new PIXI.spine.Spine(spineResource.spineData)
-  spineAnim.x = app.screen.width / 2
-  spineAnim.y = app.screen.height
-
-  spineAnim.scale.set(0.5)
-  spineAnim.state.setAnimation(0, 'animation', true) // 替换为你的动画名
-
-  app.stage.addChild(spineAnim)
-})
 </script>
 
 <template>
-  <div ref="container" style="width:600px; height:600px;"></div>
+  <video
+      ref="videoPlayer"
+      src="/video/game.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="video-fullscreen"
+      width="100%"
+  ></video>
 </template>
+
+<style scoped>
+.video-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+</style>
