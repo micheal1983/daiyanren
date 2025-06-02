@@ -7,7 +7,7 @@ defineProps({
   isJson: Boolean,
 });
 import { Vue3Lottie } from 'vue3-lottie'
-import animationData from '../assets/lottie/icon_opt.json' // 可本地导入 JSON
+import animationData from '../assets/lottie/icon.json' // 可本地导入 JSON
 
 import '@lottiefiles/lottie-player'
 const src = 'https://lottie.host/ba5e7fa4-6c83-40df-8539-9029f31826e4/MGEfFty0i5.lottie' // 或本地文件路径
