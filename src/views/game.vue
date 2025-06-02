@@ -1,5 +1,6 @@
 <script setup>
 
+import SpinePixi from "../components/SpinePixi.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@
       class="video-fullscreen"
       width="100%"
   ></video>
+  <SpinePixi></SpinePixi>
 </template>
 
 <style scoped>
