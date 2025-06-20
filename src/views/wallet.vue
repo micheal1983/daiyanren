@@ -16,38 +16,10 @@ import Biggest_winings from "../components/biggest_winings.vue";
 import Popup from '../components/Popup.vue'
 import tab_navigation from "../components/tab_navigation.vue";
 
-const showPopup = ref(false);
-// 显示弹窗
-const show = () => {
-  showPopup.value = true
-}
-// 关闭弹窗
-const close = () => {
-  showPopup.value = false
-}
-// 监听全局关闭事件（例如点击遮罩时关闭）
-window.addEventListener('close', close);
 
-// 每个栏目都调用一次
-const {
-  jsonData: imagesGZ,
-  fetchImages: fetchGZ,
-} = useFetchImages();
-
-const {
-  jsonData: imagesTG,
-  fetchImages: fetchTG,
-} = useFetchImages();
-
-const {
-  jsonData: imagesNG,
-  fetchImages: fetchNG,
-} = useFetchImages();
 
 onMounted(() => {
-  fetchGZ('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=gz'); // GZ Originals 接口
-  fetchTG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=tg'); // Table Games 接口
-  fetchNG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=ng'); // New Games 接口
+  console.log("ok");
 });
 
 </script>
@@ -56,30 +28,18 @@ onMounted(() => {
   <!-- 动态加载 Popup 组件 -->
   <Popup v-if="showPopup" @close="close" />
   <div id="wrap">
+
+    <div class="gift">
+      <div class="box cover absolute">
+        <div class="box_front cover absolute"></div>
+        <div class="coin-star-2 cover absolute"></div>
+        <div class="coin-star-1 cover absolute"></div>
+        <div class="coin-star-3 cover absolute"></div>
+        <div class="cover_gift cover absolute"></div>
+      </div>
+
+    </div>
     <top msg="Hello World" />
-    <banner/>
-    <recommend/>
-    <mainenter/>
-    <gzoriginals tit="GZ Originals" :items="imagesGZ" />
-
-    <keep-alive>
-      <biggest_winings/>
-    </keep-alive>
-
-    <table_game tit="Table Game" :items="imagesTG" />
-    <new_game tit="New Game" :items="imagesNG" />
-
-    <keep-alive>
-      <game_providers/>
-    </keep-alive>
-
-    <keep-alive>
-      <about_gamezone/>
-    </keep-alive>
-
-    <keep-alive>
-      <bottom/>
-    </keep-alive>
 
 
   </div>
@@ -92,5 +52,14 @@ onMounted(() => {
   overflow-x: hidden;
   padding: 53px 0 64px 0;
 }
-
+.gift{ width: 300px; height: 400px; background: #535bf2; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.gift img{ width: 100%; height: 100%;}
+.gift .box{ width: 204px; height: 196px; background: url("/images/gift/box.webp"); margin: 200px 0 0 50px;}
+.gift .box_front{ width: 209px; height: 163px; background: url("/images/gift/box_front.webp"); margin: 36px 0 0 0;}
+.gift .coin-star-1{ width: 57px; height: 59px; background: url("/images/gift/coin-star-1.webp"); margin: 50px 0 0 150px; z-index: 1;}
+.gift .coin-star-2{ width: 67px; height: 65px; background: url("/images/gift/coin-star-2.webp"); margin: 60px 0 0 -50px; transform: rotate(45deg); z-index: -1;}
+.gift .coin-star-3{ width: 67px; height: 65px; background: url("/images/gift/coin-star-2.webp"); margin: -80px 0 0 200px; transform: scale(.5) rotate(135deg); }
+.gift .cover_gift{ width: 252px; height: 157px; background: url("/images/gift/cover.webp"); margin: -50px 0 0 -22px;}
+.gift .absolute{ position: absolute; top: 0; left: 0;}
+.gift .cover{ background-size: cover; background-repeat: no-repeat;}
 </style>
