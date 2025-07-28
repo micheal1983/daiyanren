@@ -13,6 +13,7 @@ import About_gamezone from "../components/about_gamezone.vue";
 import Table_game from "../components/scrolling_home.vue";
 import New_game from "../components/scrolling_home.vue";
 import Biggest_winings from "../components/biggest_winings.vue";
+import Floating from "../components/Floating.vue";
 
 
 
@@ -44,6 +45,7 @@ onMounted(() => {
 <template>
 
     <div id="wrap">
+      <floating></floating>
       <top msg="Hello World"/>
       <banner/>
       <recommend/>

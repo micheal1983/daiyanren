@@ -22,7 +22,8 @@ import animationData from '../assets/lottie/icon_opt.json' // 可本地导入 JS
         <li><promo_ico :pic="GTCC" :isImg="true" msg="GTCC"/></li>
       </ul>
     </div>
-
+<!--    <div class="loading"></div>-->
+<!--    <div class="loading short"></div>-->
     <div class="promo_title1"><img src="../assets/ms/promo_title1.webp" width="100%"/></div>
     <div class="promo_tab"><img src="../assets/ms/promo_tab.webp" width="100%"/></div>
     <div class="banners">
@@ -48,4 +49,10 @@ import animationData from '../assets/lottie/icon_opt.json' // 可本地导入 JS
 .banners{ width: 366px; margin: 0 auto; padding: 10px 0; background: #2C2931; border: 1px solid #413C48; border-radius: 10px;}
 .banners ul{ width: 346px; margin-left: 10px;}
 .banners ul li{ margin-top: 10px;}
+
+
+
+.loading{ width: 300px; height: 30px; margin: 10px auto; background: #535bf2; border-radius:999px;
+  background: linear-gradient(0deg, #FFFF9F 0%, #CC9E36 100%);}
+.short{ width: 50px;}
 </style>
