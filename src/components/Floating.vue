@@ -34,7 +34,7 @@ function formatTime(seconds) {
 
 <template>
   <div class="floating">
-    <div class="badge">4</div>
+<!--    <div class="badge">4</div>-->
     <div class="date">6 Days Left</div>
     <div class="light4 opacity"><img class="rotate" src="../assets/ms/light4.webp" height="100%" width="100%"/></div>
     <div class="light4 pulse"><img class="rotate2" src="../assets/ms/light5.webp" height="100%" width="100%"/></div>
@@ -51,14 +51,16 @@ function formatTime(seconds) {
 .floating{ width: 72px; height: 88px; position: fixed; z-index: 999; right: 8px; bottom: calc(92px + env(safe-area-inset-bottom));}
 .a2{ bottom: calc(188px + env(safe-area-inset-bottom))}
 .badge{ width: 22px; height: 23px; line-height: 22px; text-align: center; position: absolute; right: 0; border-radius: 100px;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8),inset 0 0 0 2px #ffecad;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8),inset 0 0 0 2px #ffecad; color:#ffffff;
   background: #ff0000; font-size: 13px; font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 .date{ width: 72px; height: 19px; line-height: 17px; text-align: center; font-size: 10px; font-weight: bold; position: absolute; bottom: 1px; text-transform: capitalize; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);}
-.light4{ width: 130px; height: 120px; position: absolute; z-index: -1; left: -27px; top: -15px;}
-.rotate{ animation: rotate 5s linear infinite;}
-.rotate2{ animation: rotate 12s linear infinite;}
+.light4{ width: 130px; height: 130px; position: absolute; z-index: -1; left: -27px; top: -15px;}
+
+.rotate{ animation: rotate 3s linear infinite;}
+.rotate2{ animation: rotate 10s linear infinite;}
+
 .pulse{ animation: pulse 3s ease-in-out infinite;}
 .opacity{ animation: opacity 3s ease-in-out infinite;}
 
@@ -77,8 +79,8 @@ function formatTime(seconds) {
   100% { transform: scale(1); }
 }
 @keyframes opacity {
-  0%, 100% { opacity: 0.5; }
-  50%      { opacity: 0.2; }
+  0%, 100% { opacity: 0.8; }
+  50%      { opacity: 0.4; }
 }
 
 </style>
