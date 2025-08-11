@@ -7,13 +7,12 @@
     ></div>
 
     <!-- 假设这是你的系统菜单 -->
-    <div v-if="menuVisible" class="menu">
-
+    <div v-if="menuVisible" class="menu" :class="{ open: isOpen}">
       <div class="tips float-bob"></div>
-      <div class="deposit"></div>
-      <div class="refresh"></div>
-      <div class="quit"></div>
-      <div @click="closeMenu" class="close"></div>
+      <div class="deposit btn"></div>
+      <div class="refresh btn"></div>
+      <div class="quit btn"></div>
+      <div @click="closeMenu" class="close btn"></div>
     </div>
   </div>
 </template>
@@ -24,6 +23,8 @@ import { onMounted, ref } from 'vue'
 let player = null
 const isHidden = ref(false)
 const menuVisible = ref(false)
+const isOpen = ref(false)
+const isClose = ref(true)
 
 onMounted(() => {
   player = new spine.SpinePlayer("player-container", {
@@ -49,6 +50,8 @@ onMounted(() => {
 const handleIdleClick = () => {
   isHidden.value = true
   menuVisible.value = true
+  isOpen.value = true
+  isClose.value = false
   // 恢复 idle 动作（可选）
   player.setAnimation("close2open", false)
   player.addAnimation("open", true, 0);
@@ -57,7 +60,8 @@ const handleIdleClick = () => {
 const closeMenu = () => {
   isHidden.value = false
   menuVisible.value = false
-
+  isOpen.value = false
+  isClose.value = true
   // 恢复 idle 动作（可选）
   player.setAnimation("close", true)
 }
@@ -69,7 +73,7 @@ const closeMenu = () => {
   height: 150px;
   cursor: pointer;
   position: fixed;
-  left: -65px;
+  left: -70px;
   top: -10px;
 }
 
@@ -83,6 +87,7 @@ transform: translateX(30px);
   position: fixed;
   width: 150px;
   height: 150px;
+  margin: 10px 0 0 -6px;
 }
 .close{
   width: 26px;
@@ -99,14 +104,6 @@ transform: translateX(30px);
   background-size: contain;
   margin-left: 110px;
 }
-.quit{
-  width: 26px;
-  height: 30px;
-  background:url("/images/crocodile/Button-quit.png") no-repeat;
-  background-size: contain;
-  margin-left: 70px;
-  margin-top: -1px;
-}
 .refresh{
   width: 26px;
   height: 30px;
@@ -115,12 +112,21 @@ transform: translateX(30px);
   margin-left: 95px;
   margin-top: 5px;
 }
+.quit{
+  width: 26px;
+  height: 30px;
+  background:url("/images/crocodile/Button-quit.png") no-repeat;
+  background-size: contain;
+  margin-left: 70px;
+  margin-top: -1px;
+}
+
 .tips{
   width: 65px;
   height: 33px;
   background:url("/images/crocodile/Button-tips.png") no-repeat;
   background-size: contain;
-  margin-left: 75px;
+  margin-left: 90px;
   margin-top: 10px;
 }
 
@@ -129,6 +135,7 @@ transform: translateX(30px);
   will-change: transform;
 }
 
+
 @keyframes bobY{
   /* 底部停顿一下 */
   0%,10%   { transform: translateY(0); }
@@ -136,4 +143,37 @@ transform: translateX(30px);
   /* 顶部也停一下 */
   90%,100% { transform: translateY(0); }
 }
+
+.menu.open  .deposit.btn{ animation: fan-deposit 0.6s both; }
+.menu.open  .refresh.btn{ animation: fan-refresh 0.6s both; }
+.menu.open  .quit.btn{ animation: fan-quit 0.6s both; }
+.menu.open  .close.btn{ animation: fan-close 0.6s both; }
+
+.menu.close .btn{ animation: fan 1s reverse both; }
+
+@keyframes fan-deposit{
+  0%   { transform: translate(-80px,-0px);}
+  80%  { transform: translate(10px,0px);}
+  95% { transform: translate(-1px,0px);}
+  100% { transform: translate(0px,0px); }
+}
+@keyframes fan-refresh{
+  0%   { transform: translate(-80px,-40px);}
+  80%  { transform: translate(10px,5px);}
+  95% { transform: translate(-1px,-1px);}
+  100% { transform: translate(0px,0px); }
+}
+@keyframes fan-quit{
+  0%   { transform: translate(-40px,-80px);}
+  80%  { transform: translate(5px,10px);}
+  95% { transform: translate(-1px,-1px);}
+  100% { transform: translate(0px,0px); }
+}
+@keyframes fan-close{
+  0%   { transform: translate(0px,-80px);}
+  80%  { transform: translate(0px,10px);}
+  95% { transform: translate(0px,-1px);}
+  100% { transform: translate(0px,0px); }
+}
+
 </style>

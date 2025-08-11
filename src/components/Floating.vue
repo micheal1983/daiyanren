@@ -37,7 +37,7 @@ function formatTime(seconds) {
 <!--    <div class="badge">4</div>-->
     <div class="date">6 Days Left</div>
     <div class="light4 opacity"><img class="rotate" src="../assets/ms/light4.webp" height="100%" width="100%"/></div>
-    <div class="light4 pulse"><img class="rotate2" src="../assets/ms/light5.webp" height="100%" width="100%"/></div>
+    <div class="light4 scale"><img class="rotate2" src="../assets/ms/light5.webp" height="100%" width="100%"/></div>
     <img src="../assets/ms/2.2.webp" height="100%" width="100%"/>
 
   </div>
@@ -61,19 +61,14 @@ function formatTime(seconds) {
 .rotate{ animation: rotate 3s linear infinite;}
 .rotate2{ animation: rotate 10s linear infinite;}
 
-.pulse{ animation: pulse 3s ease-in-out infinite;}
+.scale{ animation: scale 3s ease-in-out infinite;}
 .opacity{ animation: opacity 3s ease-in-out infinite;}
 
 @keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
 }
-
-@keyframes pulse {
+@keyframes scale {
   0%   { transform: scale(1); }
   50%  { transform: scale(0.8); }
   100% { transform: scale(1); }
