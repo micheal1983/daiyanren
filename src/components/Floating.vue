@@ -36,13 +36,13 @@ function formatTime(seconds) {
   <div class="floating">
 <!--    <div class="badge">4</div>-->
     <div class="date">6 Days Left</div>
-    <div class="light4 opacity"><img class="rotate" src="../assets/ms/light4.webp" height="100%" width="100%"/></div>
-    <div class="light4 scale"><img class="rotate2" src="../assets/ms/light5.webp" height="100%" width="100%"/></div>
+<!--    <div class="light4 opacity"><img class="rotate" src="../assets/ms/light4.webp" height="100%" width="100%"/></div>-->
+<!--    <div class="light4 scale"><img class="rotate2" src="../assets/ms/light5.webp" height="100%" width="100%"/></div>-->
     <img src="../assets/ms/2.2.webp" height="100%" width="100%"/>
 
   </div>
   <div class="floating a2">
-    <div class="date">{{ timeString }}</div>
+<!--    <div class="date">{{ timeString }}</div>-->
     <img src="../assets/ms/2.2 after.webp" height="100%" width="100%"/>
   </div>
 </template>
@@ -55,7 +55,7 @@ function formatTime(seconds) {
   background: #ff0000; font-size: 13px; font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
-.date{ width: 72px; height: 19px; line-height: 17px; text-align: center; font-size: 10px; font-weight: bold; position: absolute; bottom: 1px; text-transform: capitalize; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);}
+.date{ width: 72px; height: 19px; text-align: center; font-size: 8.5px; font-weight: bold; position: absolute; bottom: 1px; text-transform: capitalize; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);}
 .light4{ width: 130px; height: 130px; position: absolute; z-index: -1; left: -27px; top: -15px;}
 
 .rotate{ animation: rotate 3s linear infinite;}
