@@ -73,6 +73,7 @@ const closeMenu = () => {
   height: 150px;
   cursor: pointer;
   position: fixed;
+  z-index: 9999;
   left: -70px;
   top: -10px;
 }
@@ -85,6 +86,7 @@ transform: translateX(30px);
 /* 模拟系统菜单 */
 .menu {
   position: fixed;
+  z-index: 9999;
   width: 150px;
   height: 150px;
   margin: 10px 0 0 -6px;
@@ -122,11 +124,11 @@ transform: translateX(30px);
 }
 
 .tips{
-  width: 65px;
+  width: 105px;
   height: 33px;
   background:url("/images/crocodile/Button-tips.png") no-repeat;
   background-size: contain;
-  margin-left: 90px;
+  margin-left: 100px;
   margin-top: 10px;
 }
 

@@ -4,8 +4,9 @@ import SpinePixi from "../components/SpinePixi.vue";
 </script>
 
 <template>
+  <SpinePixi></SpinePixi>
   <div class="video-fullscreen">
-    <SpinePixi></SpinePixi>
+
     <div class="gamepic">
       <img src="/images/color%20game.webp" width="100%" />
     </div>
