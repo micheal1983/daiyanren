@@ -14,6 +14,7 @@ import Table_game from "../components/scrolling_home.vue";
 import New_game from "../components/scrolling_home.vue";
 import Biggest_winings from "../components/biggest_winings.vue";
 import Floating from "../components/Floating.vue";
+import Ekyc from "../components/Ekyc.vue";
 
 
 
@@ -48,6 +49,7 @@ onMounted(() => {
       <floating></floating>
       <top msg="Hello World"/>
       <banner/>
+      <ekyc/>
       <recommend/>
       <mainenter/>
       <gzoriginals tit="GZ Originals" :items="imagesGZ" />

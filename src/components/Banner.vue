@@ -47,27 +47,27 @@ onUnmounted(stopAutoSlide)
 </script>
 
 <template>
-<!--  <video class="banner" width="100%" muted playsinline loop autoplay>-->
-<!--    <source src="../assets/video/banner-before-loop.mp4" type="video/mp4">-->
-<!--    您的浏览器不支持 video 属性。-->
-<!--  </video>-->
-  <div id="banner"
-       @touchstart="onTouchStart"
-       @touchmove="onTouchMove"
-       @touchend="onTouchEnd">
-    <div class="fade-wrapper">
-      <img v-for="(img, index) in images"
-           :key="index"
-           :src="`./images/${img}`"
-           class="fade-image"
-           :class="{ active: index === currentIndex }" />
-    </div>
-  </div>
+  <video class="banner" width="100%" muted playsinline loop autoplay>
+    <source src="../assets/video/NO EKYC Required.mp4" type="video/mp4">
+    您的浏览器不支持 video 属性。
+  </video>
+<!--  <div id="banner"-->
+<!--       @touchstart="onTouchStart"-->
+<!--       @touchmove="onTouchMove"-->
+<!--       @touchend="onTouchEnd">-->
+<!--    <div class="fade-wrapper">-->
+<!--      <img v-for="(img, index) in images"-->
+<!--           :key="index"-->
+<!--           :src="`./images/${img}`"-->
+<!--           class="fade-image"-->
+<!--           :class="{ active: index === currentIndex }" />-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div id="page">
-    <span v-for="(dot, index) in total" :key="index"
-          :class="{ focus: index === currentIndex }"></span>
-  </div>
+<!--  <div id="page">-->
+<!--    <span v-for="(dot, index) in total" :key="index"-->
+<!--          :class="{ focus: index === currentIndex }"></span>-->
+<!--  </div>-->
 </template>
 
 <style scoped>
