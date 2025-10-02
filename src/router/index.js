@@ -8,6 +8,7 @@ import account from "../views/account.vue";
 import game from "../views/game.vue";
 import promo from "../views/promo.vue";
 import SpinePixi from "../components/SpinePixi.vue";
+import test from "../views/test.vue";
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
@@ -19,6 +20,7 @@ const routes = [
     { path: '/game_list', name: 'game_list', component: game_list },
     { path: '/game', name: 'game', component: game },
     { path: '/SpinePixi', name: 'SpinePixi', component: SpinePixi },
+    { path: '/test', name: 'test', component: test },
 ]
 
 const router = createRouter({
