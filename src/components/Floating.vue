@@ -55,7 +55,9 @@ function formatTime(seconds) {
   background: #ff0000; font-size: 13px; font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
-.date{ width: 72px; height: 19px; text-align: center; font-size: 8.5px; font-weight: bold; position: absolute; bottom: 1px; text-transform: capitalize; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);}
+.date{ width: 72px; height: 19px; text-align: center; font-size: 8.5px; font-weight: bold; position: absolute; bottom: 2px; text-transform: capitalize; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);display: flex;
+  justify-content: center;  /* 水平居中 */
+  align-items: center;      /* 垂直居中 */}
 .light4{ width: 130px; height: 130px; position: absolute; z-index: -1; left: -27px; top: -15px;}
 
 .rotate{ animation: rotate 3s linear infinite;}
