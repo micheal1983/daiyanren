@@ -17,8 +17,6 @@ import Floating from "../components/Floating.vue";
 import Ekyc from "../components/Ekyc.vue";
 
 
-
-
 // 每个栏目都调用一次
 const {
   jsonData: imagesGZ,

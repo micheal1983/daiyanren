@@ -13,6 +13,7 @@
     "@lottiefiles/lottie-player": "^2.0.12",
     "@pixi-spine/runtime-3.8": "^4.0.6",
     "@pixi/assets": "^7.4.3",
+    "gsap": "^3.13.0",
     "lottie-web": "^5.12.2",
     "pixi-spine": "^4.0.6",
     "pixi.js": "^8.9.2",
