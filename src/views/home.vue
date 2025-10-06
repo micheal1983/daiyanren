@@ -71,10 +71,9 @@ onMounted(() => {
       <floating></floating>
       <top msg="Hello World"/>
       <banner/>
-      <ekyc/>
       <recommend/>
       <mainenter/>
-      <gzoriginals tit="GZ Originals" :items="imagesGZ" />
+      <gzoriginals tit="most play" :items="imagesGZ" />
 
       <keep-alive>
       <biggest_winings/>

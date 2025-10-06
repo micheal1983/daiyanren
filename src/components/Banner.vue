@@ -48,58 +48,58 @@ onUnmounted(stopAutoSlide)
 
 <template>
   <div class="block">
-  <video class="banner" width="100%" muted playsinline loop autoplay>
-    <source src="../assets/video/NO EKYC Required.mp4" type="video/mp4">
-    您的浏览器不支持 video 属性。
-  </video>
-  </div>
-<!--  <div id="banner"-->
-<!--       @touchstart="onTouchStart"-->
-<!--       @touchmove="onTouchMove"-->
-<!--       @touchend="onTouchEnd">-->
-<!--    <div class="fade-wrapper">-->
-<!--      <img v-for="(img, index) in images"-->
-<!--           :key="index"-->
-<!--           :src="`./images/${img}`"-->
-<!--           class="fade-image"-->
-<!--           :class="{ active: index === currentIndex }" />-->
-<!--    </div>-->
-<!--  </div>-->
+<!--  <video class="banner" width="100%" muted playsinline loop autoplay>-->
+<!--    <source src="../assets/video/NO EKYC Required.mp4" type="video/mp4">-->
+<!--    您的浏览器不支持 video 属性。-->
+<!--  </video>-->
 
-<!--  <div id="page">-->
-<!--    <span v-for="(dot, index) in total" :key="index"-->
-<!--          :class="{ focus: index === currentIndex }"></span>-->
-<!--  </div>-->
+
+  <div id="banner"
+       @touchstart="onTouchStart"
+       @touchmove="onTouchMove"
+       @touchend="onTouchEnd">
+    <div class="fade-wrapper">
+      <img v-for="(img, index) in images"
+           :key="index"
+           :src="`./images/${img}`"
+           class="fade-image"
+           :class="{ active: index === currentIndex }" width="100%" />
+    </div>
+  </div>
+
+  <div id="page">
+    <span v-for="(dot, index) in total" :key="index"
+          :class="{ focus: index === currentIndex }"></span>
+  </div>
+
+  </div>
 </template>
 
 <style scoped>
 
 #banner {
-  width: 362px;
+  width: 366px;
   height: 130px;
   margin: 8px auto 0;
   overflow: hidden;
   position: relative;
-  border-radius: 15px;
+  border-radius: 0;
 }
 
 .fade-wrapper {
+  width: 366px;
+  height: 130px;
   position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .fade-image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 362px;
-  height: 130px;
   object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease;
   z-index: 1;
-  border-radius: 15px;
 }
 
 .fade-image.active {
@@ -108,12 +108,12 @@ onUnmounted(stopAutoSlide)
 }
 
 #page {
-  width: 58px;
+  width: 338px;
   height: 4px;
-  margin: 8px auto 10px;
+  margin: 8px auto;
   display: flex;
-  justify-content: center;
-  gap: 6px;
+  justify-content: flex-end;
+  gap:8px;
 }
 
 #page span {
@@ -126,6 +126,6 @@ onUnmounted(stopAutoSlide)
 
 #page span.focus {
   width: 16px;
-  background: linear-gradient(317deg, #FFD67D 28.26%, #FF821B 100.27%);
+  background: #E84141;
 }
 </style>

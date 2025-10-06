@@ -84,9 +84,6 @@ onBeforeUnmount(() => {
 <template>
   <div id="recommend" class="block">
     <div id="recommend-title">
-      <div class="ico inline">
-        <img src="../assets/ms/ico-recommend.webp" width="100%" />
-      </div>
       <div class="title inline">Recommend</div>
     </div>
 
@@ -127,7 +124,7 @@ onBeforeUnmount(() => {
 
 #recommend-title .title {
   margin-left: 8px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 }
 

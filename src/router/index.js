@@ -22,7 +22,6 @@ const routes = [
     { path: '/game', name: 'game', component: game },
     { path: '/SpinePixi', name: 'SpinePixi', component: SpinePixi },
     { path: '/test', name: 'test', component: test },
-    { path: '/newhome', name: 'newhome', component: newhome },
 ]
 
 const router = createRouter({

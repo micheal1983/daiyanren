@@ -36,7 +36,7 @@ function isActive(path) {
 #tab_navigation {
   width: calc(100% + 1px);
   height: 64px;
-  background: #312F37;
+  background: #20232A;
   position: fixed;
   bottom: 0;
   z-index: 9998;

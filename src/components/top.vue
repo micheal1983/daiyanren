@@ -39,7 +39,7 @@ window.addEventListener('close', close);
 </template>
 
 <style scoped>
-#top{ width: calc(100% + 1px); background: linear-gradient(180deg, #252328 5.26%, #312F36 100%); margin-top: -1px;
+#top{ width: calc(100% + 1px); background: #20232A; margin-top: -1px;
   position: fixed; top: 0; left: 0; z-index: 9998;
   display: flex; justify-content: space-between; align-items: center;
   height: 54px;
@@ -52,8 +52,8 @@ window.addEventListener('close', close);
 .right{ margin-right: 12px;}
 
 #logo{width: 54px; height: 32px;}
-#btn-login{ font-size: 14px;}
+#btn-login{ font-size: 14px; font-weight: bold;}
 #btn-reg{ width: 86px; height: 38px;}
-#btn-search{ width: 38px; height: 38px;}
-#btn-service{ width: 38px; height: 38px;}
+#btn-search{ width: 24px; height: 24px;}
+#btn-service{ width: 24px; height: 24px;}
 </style>
