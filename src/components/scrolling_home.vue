@@ -17,6 +17,9 @@ const props = defineProps({
       <span v-for="(item, index) in items" :key="item.id">
         <router-link to="/game"><img :src="item.url" width="100%" loading="lazy" /></router-link>
       </span>
+      <span class="loading"><img src="../assets/pic-game/image_loading.webp" width="100%"/></span>
+      <span class="loading"><img src="../assets/pic-game/image_loading.webp" width="100%"/></span>
+      <span class="loading"><img src="../assets/pic-game/image_loading.webp" width="100%"/></span>
     </div>
   </div>
 </template>

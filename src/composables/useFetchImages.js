@@ -11,6 +11,7 @@ export function useFetchImages() {
         try {
             const response = await fetch(url);
             if (response.ok) {
+                document.querySelector('.loading').style.display = 'none';
                 const data = await response.json();
                 jsonData.value = data.map(item => ({
                     id: item[0],
@@ -23,6 +24,12 @@ export function useFetchImages() {
             error.value = err.message;
         } finally {
             isLoading.value = false;
+            // 隐藏所有 .loading
+            document.querySelectorAll('.loading').forEach(el => {
+                //el.style.display = 'none';        // 或者 el.classList.add('hide')
+                el.classList.add('hide');
+                setTimeout(() => (el.style.display = 'none'), 400);
+            });
         }
     };
 

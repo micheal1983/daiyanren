@@ -9,6 +9,7 @@ import game from "../views/game.vue";
 import promo from "../views/promo.vue";
 import SpinePixi from "../components/SpinePixi.vue";
 import test from "../views/test.vue";
+import newhome from "../views/newhome.vue";
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
@@ -21,6 +22,7 @@ const routes = [
     { path: '/game', name: 'game', component: game },
     { path: '/SpinePixi', name: 'SpinePixi', component: SpinePixi },
     { path: '/test', name: 'test', component: test },
+    { path: '/newhome', name: 'newhome', component: newhome },
 ]
 
 const router = createRouter({
