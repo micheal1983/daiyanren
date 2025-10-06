@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="scrolling-warp">
+  <div class="scrolling-warp block">
     <div class="scrolling-title">
       <div class="ico inline"><img src="../assets/ms/GZ Originals.webp" width="100%"/></div>
       <div class="title inline">{{ tit }}</div>

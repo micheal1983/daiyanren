@@ -47,10 +47,12 @@ onUnmounted(stopAutoSlide)
 </script>
 
 <template>
+  <div class="block">
   <video class="banner" width="100%" muted playsinline loop autoplay>
     <source src="../assets/video/NO EKYC Required.mp4" type="video/mp4">
     您的浏览器不支持 video 属性。
   </video>
+  </div>
 <!--  <div id="banner"-->
 <!--       @touchstart="onTouchStart"-->
 <!--       @touchmove="onTouchMove"-->
@@ -71,6 +73,7 @@ onUnmounted(stopAutoSlide)
 </template>
 
 <style scoped>
+
 #banner {
   width: 362px;
   height: 130px;

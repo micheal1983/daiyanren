@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div id="game_providers"><img src="../assets/ms/Game Providers.webp" width="100%"/></div>
+  <div id="game_providers" class="block"><img src="../assets/ms/Game Providers.webp" width="100%"/></div>
 </template>
 
 <style scoped>

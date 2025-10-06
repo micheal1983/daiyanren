@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div id="bottom"><img src="../assets/ms/bottom.webp" width="100%"/></div>
+<div id="bottom" class="block"><img src="../assets/ms/bottom.webp" width="100%"/></div>
 </template>
 
 <style scoped>

@@ -82,7 +82,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div id="recommend">
+  <div id="recommend" class="block">
     <div id="recommend-title">
       <div class="ico inline">
         <img src="../assets/ms/ico-recommend.webp" width="100%" />

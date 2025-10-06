@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div id="biggest_winings"><img src="../assets/ms/Biggest Winings.webp" width="100%"/></div>
+  <div id="biggest_winings" class="block"><img src="../assets/ms/Biggest Winings.webp" width="100%"/></div>
 </template>
 
 <style scoped>

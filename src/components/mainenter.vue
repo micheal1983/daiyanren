@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div id="mainenter">
+  <div id="mainenter" class="block">
     <div id="a1" class="item"><img src="../assets/ms/Tongits.webp" width="100%"/></div>
     <div id="a2" class="item"><img src="../assets/ms/Poker.webp" width="100%"/></div>
     <div id="a3" class="item"><img src="../assets/ms/Slot.webp" width="100%"/></div>

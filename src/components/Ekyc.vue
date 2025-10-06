@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="kyc">
+  <div class="block kyc">
     <img src="../assets/ms/btn1.webp" width="100%" />
     <img src="../assets/ms/ekyc.webp" width="100%" />
   </div>

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div id="about_gamezone"><img src="../assets/ms/About GameZone.webp" width="100%"/></div>
+  <div id="about_gamezone" class="block"><img src="../assets/ms/About GameZone.webp" width="100%"/></div>
 </template>
 
 <style scoped>
