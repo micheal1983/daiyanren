@@ -68,7 +68,7 @@ button:focus-visible {
   height: auto;
   opacity: 0;
   transform: translateY(50px);
-  transition: all 0.6s ease;
+  transition: all 0.7s cubic-bezier(0.34, 2, 0.64, 1);
 }
 /* 出现时的状态 */
 .block.show {
