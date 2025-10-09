@@ -1,6 +1,7 @@
 <template>
   <div class="page-shell">
-    <div class="scroll" ref="wrap" @scroll.passive="onScroll">
+    <div class="scroll" ref="scrollRef">
+      <!-- 6个模块 -->
       <div
           v-for="(item, i) in modules"
           :key="i"
@@ -9,8 +10,7 @@
           background: colors[i],
           height: heights[i] + 'px',
           marginBottom: margins[i] + 'px',
-          transform: `scaleY(${scales[i]})`,
-          transformOrigin: transformOrigins[i],
+          opacity: opacities[i],
         }"
       >
         模块 {{ i + 1 }}
@@ -20,140 +20,129 @@
 </template>
 
 <script setup>
-import {ref, reactive, onMounted, onUnmounted} from "vue";
+import { ref, reactive, onMounted } from "vue"
 
-const wrap = ref(null);
-const colors = ["#ff6b6b", "#4d96ff", "#6bcb77", "#ffd93d", "#b980f0"];
-const modules = Array(5).fill(null);
+/* --------------------------------------------------
+ * ✅ 参数区
+ * -------------------------------------------------- */
+const moduleCount = 6
+const spacing = 20
+const heights = [160, 200, 280, 220, 300, 260]
+const colors = ["#ff6b6b", "#4d96ff", "#6bcb77", "#ffd93d", "#b980f0", "#ffa94d"]
+const modules = Array(moduleCount).fill(null)
 
-/* ✅ 模块高度设置
-   模块 1：160px
-   模块 2：200px
-   模块 3：320px
-   模块 4：220px
-   模块 5：360px
-*/
-const heights = [160, 200, 320, 220, 360];
+/* ✅ 自动滚动配置 */
+const scrollDistance = 200    // 自动下滑距离(px)
+const scrollDuration = 2000   // 动画时间(ms)
+const scrollDelay = 500       // 延迟启动时间(ms)
 
-/* ✅ 动态属性
-   margins：每个模块的动态底部间距（用于挤压）
-   scales：每个模块的纵向缩放（果冻变形）
-   transformOrigins：每个模块的伸缩锚点（上滑固定顶部、下滑固定底部）
-*/
-const margins = reactive(Array(modules.length).fill(20));
-const scales = reactive(Array(modules.length).fill(1));
-const transformOrigins = reactive(Array(modules.length).fill("center top"));
+/* ✅ 模块动画配置 */
+const slideDuration = 900     // 单个模块上划用时(ms)
+const slideDelayStep = 250    // 模块依次延迟(ms)
+const bounceDuration = 600    // 果冻回弹时长(ms)
+const bounceOvershoot = 1.25  // 超出倍数（1.25=多弹一点）
+const slideSpeedDecay = 0.85  // 层级速度衰减（后面更慢）
+const baseSpacing = 20        // 模块原始间距(px)
 
-// 延迟传播缓冲区（用于制造波动延迟效果）
-const marginBuffer = Array(modules.length).fill(20).map(() => []);
+/* --------------------------------------------------
+ * ✅ 动态状态
+ * -------------------------------------------------- */
+const scrollRef = ref(null)
+const margins = reactive(Array(moduleCount).fill(baseSpacing))
+const opacities = reactive(Array(moduleCount).fill(1))
 
-// 滚动状态变量
-let lastScrollTop = 0;
-let scrollVelocity = 0;
-let direction = "down";
-let idleFrames = 0;
-let raf = 0;
+/* --------------------------------------------------
+ * ✅ 浏览器自动下滑动画
+ * -------------------------------------------------- */
+function autoScroll() {
+  const el = scrollRef.value
+  if (!el) return
+  const start = el.scrollTop
+  const end = start + scrollDistance
+  const startTime = performance.now()
 
-/* ✅ 参数控制区
--------------------------------------------------- */
-const baseSpacing = 20;     // 默认模块间距
-const elasticity = 0.6;     // 弹性强度（越大挤压幅度越大）
-const damping = 0.85;       // 延迟传播的柔和程度（越小越柔）
-const recoverSpeed = 0.1;   // 停止滚动后回归速度
-const squeezeMin = 8;       // 最小间距（挤压时不会小于这个值）
-const squeezeMax = 80;      // 最大间距（下拉时不会大于这个值）
-const delayFrames = 5;      // 每个模块之间的传播延迟帧数
-
-/* ✅ 果冻 scale 参数
--------------------------------------------------- */
-const scaleElasticity = 0.004; // 果冻压缩幅度（越大果冻感越强）
-const scaleRecover = 0.12;     // 果冻回弹速度（停止后恢复的快慢）
-
-/* ✅ 滚动事件：计算滚动速度与方向
--------------------------------------------------- */
-function onScroll() {
-  const top = wrap.value.scrollTop;
-  scrollVelocity = top - lastScrollTop;
-  direction = scrollVelocity > 0 ? "down" : "up"; // 判断是上划还是下划
-  lastScrollTop = top;
-  idleFrames = 0;
+  function animateScroll(now) {
+    const elapsed = now - startTime
+    const progress = Math.min(elapsed / scrollDuration, 1)
+    const ease =
+        progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2
+    el.scrollTop = start + (end - start) * ease
+    if (progress < 1) requestAnimationFrame(animateScroll)
+  }
+  requestAnimationFrame(animateScroll)
 }
 
-/* ✅ 动画主循环
--------------------------------------------------- */
-function loop() {
-  if (Math.abs(scrollVelocity) < 0.5) idleFrames++;
-  else idleFrames = 0;
+/* --------------------------------------------------
+ * ✅ 依次上划 + margin回弹效果
+ * -------------------------------------------------- */
+function slideModulesUp() {
+  modules.forEach((_, i) => {
+    setTimeout(() => {
+      const startTime = performance.now()
+      const startMargin = baseSpacing
+      const compressed = baseSpacing * 0.3 // 上划瞬间挤压
+      const duration = slideDuration * Math.pow(slideSpeedDecay, i)
 
-  const velocity = scrollVelocity;
-  const up = direction === "up";
-  const down = direction === "down";
+      function slideUp() {
+        const now = performance.now()
+        const elapsed = now - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const ease = 1 - Math.pow(1 - progress, 3)
 
-  // === 1️⃣ 确定传播方向 ===
-  const startIndex = up ? 0 : margins.length - 1;
-  const endIndex = up ? margins.length : -1;
-  const step = up ? 1 : -1;
+        // 挤压 margin-bottom
+        margins[i] = startMargin - (startMargin - compressed) * ease
+        opacities[i] = 1 - progress * 0.1
 
-  // === 2️⃣ 根据滑动速度计算目标间距 ===
-  let target = baseSpacing;
-  if (velocity < -1) {
-    // 上滑 → 挤压
-    target = Math.max(baseSpacing - Math.abs(velocity) * elasticity, squeezeMin);
-  } else if (velocity > 1) {
-    // 下滑 → 拉伸
-    target = Math.min(baseSpacing + velocity * elasticity, squeezeMax);
-  }
+        if (progress < 1) requestAnimationFrame(slideUp)
+        else bounceBack(i) // 完成后触发回弹
+      }
 
-  // === 3️⃣ 设置果冻伸缩锚点（上滑顶部固定，下滑底部固定） ===
-  const origin = up ? "center top" : "center bottom";
-  for (let i = 0; i < transformOrigins.length; i++) {
-    transformOrigins[i] = origin;
-  }
-
-  // === 4️⃣ 起点模块立即响应滚动 ===
-  margins[startIndex] += (target - margins[startIndex]) * 0.4;
-
-  const scaleTargetStart =
-      1 - (baseSpacing - margins[startIndex]) * scaleElasticity * (heights[startIndex] / 180);
-  scales[startIndex] += (scaleTargetStart - scales[startIndex]) * 0.4;
-
-  // 记录入缓冲区
-  marginBuffer[startIndex].push(margins[startIndex]);
-  if (marginBuffer[startIndex].length > delayFrames) marginBuffer[startIndex].shift();
-
-  // === 5️⃣ 延迟传播给其他模块 ===
-  for (let i = startIndex + step; i !== endIndex; i += step) {
-    const prevIndex = i - step;
-    const delayedMargin = marginBuffer[prevIndex]?.[0] ?? baseSpacing;
-    const diff = delayedMargin - margins[i];
-    margins[i] += diff * (1 - damping);
-
-    const scaleTarget =
-        1 - (baseSpacing - margins[i]) * scaleElasticity * (heights[i] / 180);
-    scales[i] += (scaleTarget - scales[i]) * 0.25;
-
-    marginBuffer[i].push(margins[i]);
-    if (marginBuffer[i].length > delayFrames) marginBuffer[i].shift();
-  }
-
-  // === 6️⃣ 停止滚动后缓慢回归 ===
-  if (idleFrames > 15) {
-    for (let i = 0; i < margins.length; i++) {
-      margins[i] += (baseSpacing - margins[i]) * recoverSpeed;
-      scales[i] += (1 - scales[i]) * scaleRecover;
-    }
-  }
-
-  scrollVelocity *= 0.9;
-  raf = requestAnimationFrame(loop);
+      requestAnimationFrame(slideUp)
+    }, slideDelayStep * i)
+  })
 }
 
-/* ✅ 生命周期钩子
--------------------------------------------------- */
+/* --------------------------------------------------
+ * ✅ margin 回弹逻辑
+ * -------------------------------------------------- */
+function bounceBack(index) {
+  const startTime = performance.now()
+  const start = margins[index]
+  const end = baseSpacing
+  const overshoot = end * bounceOvershoot
+
+  function animate() {
+    const now = performance.now()
+    const elapsed = now - startTime
+    const progress = Math.min(elapsed / bounceDuration, 1)
+
+    // 使用弹性缓动曲线 (easeOutElastic)
+    const p = 0.3
+    const ease =
+        Math.pow(2, -10 * progress) *
+        Math.sin(((progress - p / 4) * (2 * Math.PI)) / p) +
+        1
+
+    // margin在压缩后，先略超过正常值，再回到20px
+    margins[index] = start + (overshoot - start) * ease
+    if (progress < 1) requestAnimationFrame(animate)
+    else margins[index] = end // 归位
+  }
+
+  requestAnimationFrame(animate)
+}
+
+/* --------------------------------------------------
+ * ✅ 生命周期
+ * -------------------------------------------------- */
 onMounted(() => {
-  raf = requestAnimationFrame(loop);
-});
-onUnmounted(() => cancelAnimationFrame(raf));
+  setTimeout(() => {
+    autoScroll()
+    slideModulesUp()
+  }, scrollDelay)
+})
 </script>
 
 <style scoped>
@@ -170,10 +159,9 @@ onUnmounted(() => cancelAnimationFrame(raf));
   flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 20px 20px 100px;
+  padding: 20px;
 }
 
-/* ✅ 模块样式 */
 .mod {
   width: 100%;
   border-radius: 12px;
@@ -183,7 +171,7 @@ onUnmounted(() => cancelAnimationFrame(raf));
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: margin-bottom 0.12s ease-out;
-  will-change: margin-bottom, transform;
+  transition: margin-bottom 0.15s ease-out;
+  will-change: margin-bottom, opacity;
 }
 </style>

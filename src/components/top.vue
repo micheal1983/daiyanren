@@ -32,7 +32,7 @@ window.addEventListener('close', close);
       <div id="btn-login" class="inline top-btn" @click="show">Sign in</div>
       <div id="btn-reg" class="inline top-btn"><img src="../assets/ms/btn-reg.webp" width="100%"/></div>
       <div id="btn-search" class="inline top-btn"><img src="../assets/ms/btn-search.webp" width="100%"/></div>
-      <div id="btn-service" class="inline top-btn"><img src="../assets/ms/btn-service.webp" width="100%"/></div>
+      <div id="btn-service" class="inline top-btn"><router-link to="/test"><img src="../assets/ms/btn-service.webp" width="100%"/></router-link></div>
     </div>
   </div>
 
