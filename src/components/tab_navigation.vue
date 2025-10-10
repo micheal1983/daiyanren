@@ -27,7 +27,7 @@ function isActive(path) {
         class="item"
         :class="[tab.name, { focus: isActive(tab.path) }]"
     >
-      {{ tab.label }}
+      <div class="txt">{{ tab.label }}</div>
     </router-link>
   </div>
 </template>
@@ -35,7 +35,7 @@ function isActive(path) {
 <style scoped>
 #tab_navigation {
   width: calc(100% + 1px);
-  height: 64px;
+  height: 80px;
   background: #20232A;
   position: fixed;
   bottom: 0;
@@ -50,29 +50,27 @@ function isActive(path) {
 
 .item {
   width: 72px;
-  height: 52px;
-  line-height: 70px;
-  margin-top: 6px;
+  min-height: 36px;
   text-transform: capitalize;
   color: #BCB8C5;
   font-size: 11px;
   text-align: center;
   text-decoration: none;
 }
-
+.txt{ width: 70px; margin-top: 40px;}
 /* 默认图标背景 */
-.home { background: url("../assets/ms/home.webp") no-repeat top; background-size: 28px 28px; }
-.reward { background: url("../assets/ms/reward.webp") no-repeat top; background-size: 28px 28px; }
-.tongits { background: url("../assets/ms/tongits_btn.webp") no-repeat top; background-size: 28px 28px; }
-.promo { background: url("../assets/ms/tongits_btn.webp") no-repeat top; background-size: 28px 28px; }
-.wallet { background: url("../assets/ms/wallet.webp") no-repeat top; background-size: 28px 28px; }
-.account { background: url("../assets/ms/account.webp") no-repeat top; background-size: 28px 28px; }
+.home { background: url("../assets/ms/home.webp") no-repeat center; background-size: 28px 28px; font-size: 0;}
+.reward { background: url("../assets/ms/reward.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.tongits { background: url("../assets/ms/tongits_btn.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.promo { background: url("../assets/ms/promo.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.wallet { background: url("../assets/ms/wallet.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.account { background: url("../assets/ms/account.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
 
 /* 激活状态图标与颜色 */
-.home.focus { background-image: url("../assets/ms/home_act.webp"); color: #FFC972; }
-.reward.focus { background-image: url("../assets/ms/reward_act.webp"); color: #FFC972; }
-.tongits.focus { background-image: url("../assets/ms/tongits_btn_act.webp"); color: #FFC972; }
-.promo.focus { background-image: url("../assets/ms/tongits_btn_act.webp"); color: #FFC972; }
-.wallet.focus { background-image: url("../assets/ms/wallet_act.webp"); color: #FFC972; }
-.account.focus { background-image: url("../assets/ms/account_act.webp"); color: #FFC972; }
+.home.focus { background-image: url("../assets/ms/home_act.webp"); color: #E84141;  font-size: 12px;}
+.reward.focus { background-image: url("../assets/ms/reward_act.webp"); color: #E84141;  font-size: 12px;}
+.tongits.focus { background-image: url("../assets/ms/tongits_btn_act.webp"); color: #E84141;  font-size: 12px;}
+.promo.focus { background-image: url("../assets/ms/promo_act.webp"); color: #E84141;  font-size: 12px;}
+.wallet.focus { background-image: url("../assets/ms/wallet_act.webp"); color: #E84141;  font-size: 12px;}
+.account.focus { background-image: url("../assets/ms/account_act.webp"); color: #E84141;  font-size: 12px;}
 </style>

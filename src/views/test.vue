@@ -1,147 +1,178 @@
 <template>
-  <div class="page-shell">
-    <div class="scroll" ref="scrollRef">
-      <!-- 6个模块 -->
-      <div
-          v-for="(item, i) in modules"
-          :key="i"
-          class="mod"
-          :style="{
-          background: colors[i],
-          height: heights[i] + 'px',
-          marginBottom: margins[i] + 'px',
-          opacity: opacities[i],
-        }"
-      >
-        模块 {{ i + 1 }}
-      </div>
+  <top msg="Hello World"/>
+  <div class="page-shell" ref="page">
+    <div class="mod-item red">
+      <img src="../assets/ms/new/Banner.webp" alt="" width="100%">
+    </div>
+    <div class="mod-item blue">
+      <img src="../assets/ms/new/RecommoendTitle.webp" alt="" height="100%">
+    </div>
+    <div class="mod-item green">
+      <img src="../assets/ms/new/RecommoendList.webp" alt="" height="100%">
+    </div>
+    <div class="mod-item yellow">
+      <img src="../assets/ms/new/Entrace.webp" alt="" width="100%">
+    </div>
+    <div class="mod-item purple">
+      <img src="../assets/ms/new/MostPlayTitle.webp" alt="" height="100%">
+    </div>
+    <div class="mod-item purple1">
+      <img src="../assets/ms/new/MostPlayGameList.webp" alt="" height="100%">
+    </div>
+    <div class="mod-item purple1">
+      <img src="../assets/ms/new/MostPlayGameList.webp" alt="" height="100%">
+    </div>
+    <div class="mod-item purple1">
+      <img src="../assets/ms/new/MostPlayGameList.webp" alt="" height="100%">
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from "vue"
+import { ref, onMounted, onUnmounted, nextTick } from "vue"
+import { animate, spring } from "motion"
+import Top from "../components/top.vue";
 
-/* --------------------------------------------------
- * ✅ 参数区
- * -------------------------------------------------- */
-const moduleCount = 6
-const spacing = 20
-const heights = [160, 200, 280, 220, 300, 260]
-const colors = ["#ff6b6b", "#4d96ff", "#6bcb77", "#ffd93d", "#b980f0", "#ffa94d"]
-const modules = Array(moduleCount).fill(null)
+/* ✅ 页面容器 */
+const page = ref(null)
+let mods = []
+
+/* ✅ 动画参数 */
+const delayStep = 0.05      // 模块之间延迟传播（秒）
+const stiffness = 150       // 弹性系数（越大越“紧”）
+const damping = 8           // 阻尼（越小越Q弹）
+const followStrength = 0.4  // 跟随强度（越大越同步）
+const falloff = 0.85        // 波动衰减系数（越小底部反应更明显）
+const overshootAmp = 0.05   // 回弹超调幅度（0.03~0.08建议值）
 
 /* ✅ 自动滚动配置 */
-const scrollDistance = 200    // 自动下滑距离(px)
-const scrollDuration = 2000   // 动画时间(ms)
-const scrollDelay = 500       // 延迟启动时间(ms)
+const scrollDistance = 120  // 页面加载后自动下滑距离(px)
+const scrollDuration = 800  // 动画时间(ms)
+const scrollDelay = 400     // 延迟启动时间(ms)
 
-/* ✅ 模块动画配置 */
-const slideDuration = 900     // 单个模块上划用时(ms)
-const slideDelayStep = 250    // 模块依次延迟(ms)
-const bounceDuration = 600    // 果冻回弹时长(ms)
-const bounceOvershoot = 1.25  // 超出倍数（1.25=多弹一点）
-const slideSpeedDecay = 0.85  // 层级速度衰减（后面更慢）
-const baseSpacing = 20        // 模块原始间距(px)
+/* ✅ 状态变量 */
+let lastScrollY = 0
+let velocity = 0
+let ticking = false
+let idleTimer = null
 
-/* --------------------------------------------------
- * ✅ 动态状态
- * -------------------------------------------------- */
-const scrollRef = ref(null)
-const margins = reactive(Array(moduleCount).fill(baseSpacing))
-const opacities = reactive(Array(moduleCount).fill(1))
+/* =====================
+   🌊 滚动波动动画逻辑
+===================== */
+function update() {
+  const current = page.value.scrollTop
+  velocity = current - lastScrollY
+  lastScrollY = current
 
-/* --------------------------------------------------
- * ✅ 浏览器自动下滑动画
- * -------------------------------------------------- */
+  const isScrolling = Math.abs(velocity) > 0.5
+
+  // 🌊 模块延迟波动
+  mods.forEach((el, i) => {
+    const delay = i * delayStep
+    const influence = Math.pow(falloff, i) // 越往下衰减越少
+    const translateY = -current * influence * followStrength
+    const scaleY = 1 - Math.min(Math.abs(velocity) / 3000, 0.05) * influence
+
+    animate(
+        el,
+        { y: translateY, scaleY },
+        {
+          type: spring,
+          stiffness,
+          damping,
+          delay,
+          duration: 0.6,
+        }
+    )
+  })
+
+  // 🧘 停止滚动后回弹 + 轻微超调
+  clearTimeout(idleTimer)
+  if (!isScrolling) {
+    idleTimer = setTimeout(() => {
+      mods.forEach((el, i) => {
+        const overshootY = (Math.random() - 0.5) * overshootAmp * 100
+
+        // 第一段：反向小弹
+        animate(
+            el,
+            { y: overshootY, scaleY: 1 + overshootAmp },
+            {
+              type: spring,
+              stiffness: 160,
+              damping: 12,
+              delay: i * 0.05,
+              duration: 0.25,
+              onComplete: () => {
+                // 第二段：再回到原位
+                animate(
+                    el,
+                    { y: 0, scaleY: 1 },
+                    {
+                      type: spring,
+                      stiffness: 180,
+                      damping: 16,
+                      delay: 0,
+                      duration: 0.4,
+                    }
+                )
+              },
+            }
+        )
+      })
+    }, 150)
+  }
+
+  ticking = false
+}
+
+/* =====================
+   📜 滚动事件绑定
+===================== */
+function onScroll() {
+  if (!ticking) {
+    requestAnimationFrame(update)
+    ticking = true
+  }
+}
+
+/* =====================
+   🧭 页面加载后自动下滑
+===================== */
 function autoScroll() {
-  const el = scrollRef.value
-  if (!el) return
+  const el = page.value
   const start = el.scrollTop
   const end = start + scrollDistance
   const startTime = performance.now()
 
-  function animateScroll(now) {
-    const elapsed = now - startTime
-    const progress = Math.min(elapsed / scrollDuration, 1)
+  function scrollAnim(now) {
+    const t = (now - startTime) / scrollDuration
+    const progress = Math.min(t, 1)
     const ease =
         progress < 0.5
             ? 4 * progress * progress * progress
             : 1 - Math.pow(-2 * progress + 2, 3) / 2
     el.scrollTop = start + (end - start) * ease
-    if (progress < 1) requestAnimationFrame(animateScroll)
-  }
-  requestAnimationFrame(animateScroll)
-}
-
-/* --------------------------------------------------
- * ✅ 依次上划 + margin回弹效果
- * -------------------------------------------------- */
-function slideModulesUp() {
-  modules.forEach((_, i) => {
-    setTimeout(() => {
-      const startTime = performance.now()
-      const startMargin = baseSpacing
-      const compressed = baseSpacing * 0.3 // 上划瞬间挤压
-      const duration = slideDuration * Math.pow(slideSpeedDecay, i)
-
-      function slideUp() {
-        const now = performance.now()
-        const elapsed = now - startTime
-        const progress = Math.min(elapsed / duration, 1)
-        const ease = 1 - Math.pow(1 - progress, 3)
-
-        // 挤压 margin-bottom
-        margins[i] = startMargin - (startMargin - compressed) * ease
-        opacities[i] = 1 - progress * 0.1
-
-        if (progress < 1) requestAnimationFrame(slideUp)
-        else bounceBack(i) // 完成后触发回弹
-      }
-
-      requestAnimationFrame(slideUp)
-    }, slideDelayStep * i)
-  })
-}
-
-/* --------------------------------------------------
- * ✅ margin 回弹逻辑
- * -------------------------------------------------- */
-function bounceBack(index) {
-  const startTime = performance.now()
-  const start = margins[index]
-  const end = baseSpacing
-  const overshoot = end * bounceOvershoot
-
-  function animate() {
-    const now = performance.now()
-    const elapsed = now - startTime
-    const progress = Math.min(elapsed / bounceDuration, 1)
-
-    // 使用弹性缓动曲线 (easeOutElastic)
-    const p = 0.3
-    const ease =
-        Math.pow(2, -10 * progress) *
-        Math.sin(((progress - p / 4) * (2 * Math.PI)) / p) +
-        1
-
-    // margin在压缩后，先略超过正常值，再回到20px
-    margins[index] = start + (overshoot - start) * ease
-    if (progress < 1) requestAnimationFrame(animate)
-    else margins[index] = end // 归位
+    if (progress < 1) requestAnimationFrame(scrollAnim)
   }
 
-  requestAnimationFrame(animate)
+  requestAnimationFrame(scrollAnim)
 }
 
-/* --------------------------------------------------
- * ✅ 生命周期
- * -------------------------------------------------- */
-onMounted(() => {
-  setTimeout(() => {
-    autoScroll()
-    slideModulesUp()
-  }, scrollDelay)
+/* =====================
+   🪄 生命周期
+===================== */
+onMounted(async () => {
+  await nextTick()
+  mods = Array.from(page.value.querySelectorAll(".mod-item"))
+  page.value.addEventListener("scroll", onScroll, { passive: true })
+
+  // 页面加载后自动下滑
+  setTimeout(() => autoScroll(), scrollDelay)
+})
+
+onUnmounted(() => {
+  page.value?.removeEventListener("scroll", onScroll)
 })
 </script>
 
@@ -149,21 +180,16 @@ onMounted(() => {
 .page-shell {
   width: 390px;
   height: 844px;
-  background: #0b0d12;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  overflow-y: scroll;
+  background: #181A20;
+  padding: 0;
 }
 
-.scroll {
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 20px;
-}
-
-.mod {
-  width: 100%;
+/* ✅ 模块基础样式 */
+.mod-item {
+  width: 366px;
+  height: 160px;
+  margin: 30px 12px;
   border-radius: 12px;
   color: #fff;
   font-size: 20px;
@@ -171,7 +197,33 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: margin-bottom 0.15s ease-out;
-  will-change: margin-bottom, opacity;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+/* ✅ 各模块配色与高度 */
+.red {
+  background: #ff6b6b;
+  height: 100px;
+  margin-top: 100px;
+}
+.blue {
+  height: 13px;
+  justify-content: left;
+}
+.green {
+  height: 74px;
+  margin-top: -12px;
+}
+.yellow {
+  color: #333;
+}
+.purple {
+  height: 28px;
+  margin-bottom: -12px;
+}
+.purple1 {
+  height: 142px;
+  margin-bottom: -12px;
 }
 </style>
