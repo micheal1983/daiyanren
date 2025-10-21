@@ -1,6 +1,7 @@
 <template>
   <top msg="Hello World"/>
   <div class="page-shell" ref="page">
+    <div class="mod-item first"></div>
     <div class="mod-item red">
       <img src="../assets/ms/new/Banner.webp" alt="" width="100%">
     </div>
@@ -20,10 +21,10 @@
       <img src="../assets/ms/new/MostPlayGameList.webp" alt="" height="100%">
     </div>
     <div class="mod-item purple1">
-      <img src="../assets/ms/new/MostPlayGameList.webp" alt="" height="100%">
+      <img src="../assets/ms/new/MostPlayGameList2.webp" alt="" height="100%">
     </div>
-    <div class="mod-item purple1">
-      <img src="../assets/ms/new/MostPlayGameList.webp" alt="" height="100%">
+    <div class="mod-item purple1 last">
+      <img src="../assets/ms/new/MostPlayGameList3.webp" alt="" height="100%">
     </div>
   </div>
 </template>
@@ -39,14 +40,14 @@ let mods = []
 
 /* ✅ 动画参数 */
 const delayStep = 0.05      // 模块之间延迟传播（秒）
-const stiffness = 150       // 弹性系数（越大越“紧”）
-const damping = 8           // 阻尼（越小越Q弹）
+const stiffness = 120       // 弹性系数（越大越“紧”）
+const damping = 12           // 阻尼（越小越Q弹）
 const followStrength = 0.4  // 跟随强度（越大越同步）
 const falloff = 0.85        // 波动衰减系数（越小底部反应更明显）
 const overshootAmp = 0.05   // 回弹超调幅度（0.03~0.08建议值）
 
 /* ✅ 自动滚动配置 */
-const scrollDistance = 120  // 页面加载后自动下滑距离(px)
+const scrollDistance = 100  // 页面加载后自动下滑距离(px)
 const scrollDuration = 800  // 动画时间(ms)
 const scrollDelay = 400     // 延迟启动时间(ms)
 
@@ -226,4 +227,6 @@ onUnmounted(() => {
   height: 142px;
   margin-bottom: -12px;
 }
+.first{ height: 100px;}
+.last{ margin-bottom: 80px;}
 </style>
