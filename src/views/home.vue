@@ -39,8 +39,6 @@ onMounted(() => {
   fetchNG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=ng'); // New Games 接口
 
 
-
-
 });
 
 </script>
