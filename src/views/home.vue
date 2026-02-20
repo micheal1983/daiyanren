@@ -49,7 +49,7 @@ onMounted(() => {
       <floating></floating>
       <top msg="Hello World"/>
       <banner/>
-      <ekyc/>
+<!--      <ekyc/>-->
       <recommend/>
       <mainenter/>
       <gzoriginals tit="GZ Originals" :items="imagesGZ" />

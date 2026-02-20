@@ -41,10 +41,10 @@ function formatTime(seconds) {
     <img src="../assets/ms/2.2.webp" height="100%" width="100%"/>
 
   </div>
-  <div class="floating a2">
+<!--  <div class="floating a2">-->
 <!--    <div class="date">{{ timeString }}</div>-->
-    <img src="../assets/ms/2.2 after.webp" height="100%" width="100%"/>
-  </div>
+<!--    <img src="../assets/ms/2.2 after.webp" height="100%" width="100%"/>-->
+<!--  </div>-->
 </template>
 
 <style scoped>
