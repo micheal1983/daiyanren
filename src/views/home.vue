@@ -38,27 +38,7 @@ onMounted(() => {
   fetchTG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=tg'); // Table Games 接口
   fetchNG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=ng'); // New Games 接口
 
-  const blocks = document.querySelectorAll(".block");
 
-  const handleScroll = () => {
-    const triggerBottom = window.innerHeight * 0.85;
-
-    blocks.forEach((block, i) => {
-      const rect = block.getBoundingClientRect();
-      if (rect.top < triggerBottom) {
-        block.classList.add("show");
-      } else {
-        block.classList.remove("show");
-      }
-    });
-  };
-
-  window.addEventListener("scroll", handleScroll);
-  handleScroll();
-
-  onUnmounted(() => {
-    window.removeEventListener("scroll", handleScroll);
-  });
 
 
 });

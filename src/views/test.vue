@@ -3,7 +3,7 @@
   <div class="page-shell" ref="page">
     <div class="mod-item first"></div>
     <div class="mod-item red">
-      <img src="../assets/ms/new/Banner.webp" alt="" width="100%">
+      <img src="../assets/ms/new/Banner.webp" alt="sdfasfasfas" width="100%">
     </div>
     <div class="mod-item blue">
       <img src="../assets/ms/new/RecommoendTitle.webp" alt="" height="100%">
