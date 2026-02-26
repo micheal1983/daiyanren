@@ -25,7 +25,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory('/daiyanren/'),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes,
     scrollBehavior(to, from, savedPosition) {
         // 总是滚动到顶部
