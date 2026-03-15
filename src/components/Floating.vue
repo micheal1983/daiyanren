@@ -25,7 +25,7 @@ const fetchFloatingImage = async () => {
     const response = await fetch(`${API_BASE_URL}/picture/getpublicall`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ channel_id: 11 })
+      body: JSON.stringify({ channel_id: 11, limit: 1, status: 1 })
     });
 
     if (response.ok) {
