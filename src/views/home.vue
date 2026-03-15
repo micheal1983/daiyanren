@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, onBeforeUnmount, ref, nextTick, onUnmounted} from 'vue';
 import { useFetchImages } from '../composables/useFetchImages';
+import { API_BASE_URL } from '../config'; // 导入公共配置
 
 import top from '../components/top.vue';
 import Bottom from "../components/bottom.vue";
@@ -34,13 +35,15 @@ const {
 } = useFetchImages();
 
 onMounted(() => {
-  fetchGZ('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=gz'); // GZ Originals 接口
-  fetchTG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=tg'); // Table Games 接口
-  fetchNG('https://script.google.com/macros/s/AKfycbyv04RsxX1bjlqMsU555dzXH76PTCUIk_tEG64eSduq0dXor-CwS5v4tqiog4szodje0A/exec?type=ng'); // New Games 接口
+  const apiUrl = `${API_BASE_URL}/game/getpublicall`;
 
+  // 将参数改为POST请求发送
+  fetchGZ(apiUrl, { channel_id: 4, type: 'gz' }); // GZ Originals 接口
+  fetchTG(apiUrl, { channel_id: 6, type: 'gz' }); // Table Games 接口
+  fetchNG(apiUrl, { channel_id: 5, type: 'gz' }); // New Games 接口
 
-
-
+  // 移除原有的滚动动画逻辑，因为在useFetchImages中已经移除了DOM操作
+  // 如果需要滚动动画，请在组件内部或单独的composable中实现
 });
 
 </script>

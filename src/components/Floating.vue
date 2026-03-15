@@ -1,15 +1,56 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { API_BASE_URL, IMAGE_BASE_URL } from '../config'; // 导入公共配置
 
-// 倒计时时长（以秒为单位）
+// --- Existing Timer Logic ---
 const duration = 3600 // 例如 1 小时倒计时
-
 const remaining = ref(duration)
 const timeString = ref(formatTime(remaining.value))
-
 let timer = null
 
+function formatTime(seconds) {
+  const h = String(Math.floor(seconds / 3600)).padStart(2, '0')
+  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0')
+  const s = String(seconds % 60).padStart(2, '0')
+  return `${h}:${m}:${s}`
+}
+
+// --- New Image Fetching Logic ---
+const imageUrl = ref('');
+// 图片URL前缀，使用公共配置拼接
+const IMAGE_PREFIX = `${IMAGE_BASE_URL}/picture/floating/`;
+
+const fetchFloatingImage = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/picture/getpublicall`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ channel_id: 11 })
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      const data = result.data || [];
+      // 浮动图标通常只有一个，我们取第一个
+      if (data.length > 0) {
+        const firstItem = data[0];
+        try {
+          const info = JSON.parse(firstItem.info);
+          imageUrl.value = IMAGE_PREFIX + info.cover;
+        } catch (e) {
+          console.error(`解析浮动图片 info 失败 (ID: ${firstItem.id}):`, firstItem.info, e);
+        }
+      }
+    } else {
+      console.error('获取浮动图片失败:', response.status);
+    }
+  } catch (error) {
+    console.error('获取浮动图片失败:', error);
+  }
+};
+
 onMounted(() => {
+  // 启动倒计时
   timer = setInterval(() => {
     if (remaining.value > 0) {
       remaining.value--
@@ -18,33 +59,27 @@ onMounted(() => {
       clearInterval(timer)
     }
   }, 1000)
+
+  // 获取图片
+  fetchFloatingImage();
 })
 
 onUnmounted(() => {
   clearInterval(timer)
 })
 
-function formatTime(seconds) {
-  const h = String(Math.floor(seconds / 3600)).padStart(2, '0')
-  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0')
-  const s = String(seconds % 60).padStart(2, '0')
-  return `${h}:${m}:${s}`
-}
 </script>
 
 <template>
   <div class="floating">
-<!--    <div class="badge">4</div>-->
-    <div class="date">6 Days Left</div>
-<!--    <div class="light4 opacity"><img class="rotate" src="../assets/ms/light4.webp" height="100%" width="100%"/></div>-->
-<!--    <div class="light4 scale"><img class="rotate2" src="../assets/ms/light5.webp" height="100%" width="100%"/></div>-->
-    <img src="../assets/ms/2.2.webp" height="100%" width="100%"/>
-
+    <div class="date">{{ timeString }}</div>
+    <!-- 仅在获取到图片URL后显示 -->
+    <img v-if="imageUrl" :src="imageUrl" height="100%" width="100%"/>
   </div>
-  <div class="floating a2">
+<!--  <div class="floating a2">-->
 <!--    <div class="date">{{ timeString }}</div>-->
-    <img src="../assets/ms/2.2 after.webp" height="100%" width="100%"/>
-  </div>
+<!--    <img src="../assets/ms/2.2 after.webp" height="100%" width="100%"/>-->
+<!--  </div>-->
 </template>
 
 <style scoped>
