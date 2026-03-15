@@ -58,19 +58,19 @@ function isActive(path) {
   text-decoration: none;
 }
 .txt{ width: 70px; margin-top: 40px;}
-/* 默认图标背景 */
+/* 默认图标背景 - 修复了大小写匹配问题 */
 .home { background: url("../assets/ms/home.webp") no-repeat center; background-size: 28px 28px; font-size: 0;}
-.reward { background: url("../assets/ms/reward.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.reward { background: url("../assets/ms/Reward.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
 .tongits { background: url("../assets/ms/tongits_btn.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
 .promo { background: url("../assets/ms/promo.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
-.wallet { background: url("../assets/ms/wallet.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
-.account { background: url("../assets/ms/account.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.wallet { background: url("../assets/ms/Wallet.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
+.account { background: url("../assets/ms/Account.webp") no-repeat center; background-size: 28px 28px;  font-size: 0;}
 
-/* 激活状态图标与颜色 */
+/* 激活状态图标与颜色 - 修复了大小写匹配问题 */
 .home.focus { background-image: url("../assets/ms/home_act.webp"); color: #E84141;  font-size: 12px;}
-.reward.focus { background-image: url("../assets/ms/reward_act.webp"); color: #E84141;  font-size: 12px;}
+.reward.focus { background-image: url("../assets/ms/Reward_act.webp"); color: #E84141;  font-size: 12px;}
 .tongits.focus { background-image: url("../assets/ms/tongits_btn_act.webp"); color: #E84141;  font-size: 12px;}
 .promo.focus { background-image: url("../assets/ms/promo_act.webp"); color: #E84141;  font-size: 12px;}
-.wallet.focus { background-image: url("../assets/ms/wallet_act.webp"); color: #E84141;  font-size: 12px;}
-.account.focus { background-image: url("../assets/ms/account_act.webp"); color: #E84141;  font-size: 12px;}
+.wallet.focus { background-image: url("../assets/ms/Wallet_act.webp"); color: #E84141;  font-size: 12px;}
+.account.focus { background-image: url("../assets/ms/Account_act.webp"); color: #E84141;  font-size: 12px;}
 </style>
