@@ -83,7 +83,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.floating{ width: 72px; height: 88px; position: fixed; z-index: 999; right: 8px; bottom: calc(92px + env(safe-area-inset-bottom));}
+.floating{ width: 72px; height: 88px; position: fixed; z-index: 999; right: 8px; bottom: calc(310px + env(safe-area-inset-bottom));}
 .a2{ bottom: calc(188px + env(safe-area-inset-bottom))}
 .badge{ width: 22px; height: 23px; line-height: 22px; text-align: center; position: absolute; right: 0; border-radius: 100px;
   box-shadow: 0 0 8px rgba(255, 0, 0, 0.8),inset 0 0 0 2px #ffecad; color:#ffffff;
