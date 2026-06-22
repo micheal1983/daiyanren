@@ -21,7 +21,14 @@ const routes = [
     { path: '/game_list', name: 'game_list', component: game_list },
     { path: '/game', name: 'game', component: game },
     { path: '/SpinePixi', name: 'SpinePixi', component: SpinePixi },
-    { path: '/test', name: 'test', component: test },
+    {
+        path: '/test',
+        name: 'test',
+        component: test,
+        meta: {
+            showTabBar: false
+        }
+    },
 ]
 
 const router = createRouter({
